@@ -7,23 +7,18 @@ document.getElementById('contact-form').addEventListener('submit', function(even
     const message = document.getElementById('message').value;
 
     // Send the email using EmailJS
-    emailjs.send("service_z7ywxbv", "template_e6cnynh", templateParams, "mlw1gOv3vSlu-5g1m");{
-        from_name: "Test Name,
-        from_email: test@example.com,
-        message: Test Message
-        }).then(function(response) {
-    console.log("SUCCESS", response.status, response.text);
-    }, function(error) {
-    console.log("FAILED", error);
-    });
-    .then(function(response) {
-        // Show success message
-        document.getElementById('success-message').style.display = 'block';
-        document.getElementById('error-message').style.display = 'none';
-        document.getElementById('contact-form').reset();
-    }, function(error) {
-        // Show error message
-        document.getElementById('error-message').style.display = 'block';
-        document.getElementById('success-message').style.display = 'none';
-    });
+    emailjs.send(
+    'service_z7ywxbv',  // Your service ID
+    'template_e6cnynh', // Your template ID
+    {
+        from_name: name,
+        from_email: email,
+        message: message
+    },
+    'mlw1gOv3vSlu-5g1m' // Your public API key
+)
+.then(function(response) {
+    console.log('SUCCESS!', response.status, response.text);
+}, function(error) {
+    console.log('FAILED...', error);
 });
