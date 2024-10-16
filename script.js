@@ -8,10 +8,14 @@ document.getElementById('contact-form').addEventListener('submit', function(even
 
     // Send the email using EmailJS
     emailjs.send("service_z7ywxbv", "template_e6cnynh", templateParams, "mlw1gOv3vSlu-5g1m");{
-        from_name: name,
-        from_email: email,
-        message: message
-    })
+        from_name: "Test Name,
+        from_email: test@example.com,
+        message: Test Message
+        }).then(function(response) {
+    console.log("SUCCESS", response.status, response.text);
+    }, function(error) {
+    console.log("FAILED", error);
+    });
     .then(function(response) {
         // Show success message
         document.getElementById('success-message').style.display = 'block';
