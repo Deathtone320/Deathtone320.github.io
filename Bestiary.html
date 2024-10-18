@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heroquest Bestiary</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Heroquest Bestiary</h1>
+        <nav>
+            <ul>
+                <li><a href="bestiary.html">Bestiary</a></li>
+                <li><a href="terminology.html">Common Abilities</a></li>
+                <li><a href="encounter.html">Current Encounter</a></li>
+            </ul>
+        </nav>
+        <input type="text" id="search-bar" placeholder="Search Bestiary">
+    </header>
+
+    <main>
+        <section id="bestiary">
+            <h2>Monsters and Heroes</h2>
+            <!-- Bestiary grid populated by JS -->
+            <div id="bestiary-list"></div>
+        </section>
+    </main>
+
+    <script src="bestiary.js"></script>
+</body>
+</html>
