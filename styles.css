@@ -124,11 +124,13 @@ footer {
 }
 
 
-.encounter-builder {
-    background: url('images/encounter-builder-background.PNG') no-repeat center center;
-    background-size: cover;
-    min-height: 100vh;
-    padding: 20px;
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+.builder {
+    background-image: url('images/encounter-builder-background.PNG');
+    background-size: cover; /* Ensures the image covers the section */
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; /* Set to full viewport height */
+    padding: 2rem 0;
 }
+
 
