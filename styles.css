@@ -123,36 +123,19 @@ footer {
     }
 }
 
-/* Adjust builder background */
+/* Full viewport builder section */
 .builder {
     background-image: url('images/encounter-builder-background.PNG');
     background-size: cover; /* Ensures the image covers the whole section */
     background-position: center;
     background-repeat: no-repeat;
-    background-color: brown; /* Changes the background color to brown */
-    height: 100vh; /* Full height of the viewport */
-    width: 100vw; /* Full width of the viewport */
-    opacity: 0.7; /* Makes the background image transparent */
+    background-color: brown; /* Sets background color to brown */
+    min-height: 100vh; /* Ensures section takes up the full height of the viewport */
+    width: 100%; /* Ensures full width */
+    position: relative; /* Ensures it stays relative to the viewport */
 }
 
-/* Header and footer */
-header, footer {
-    z-index: 2; /* Ensures the panels are above the background */
-    position: relative;
-}
-
-/* Container styles */
-.builder-container {
-    max-width: 1100px;
-    margin: 0 auto;
-    background: rgba(255, 255, 255, 0.9); /* Semi-transparent background for contrast */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    position: relative;
-    z-index: 1;
-}
-
+/* Gray transparent box for text */
 .builder-text-box {
     background-color: rgba(128, 128, 128, 0.7); /* Semi-transparent gray */
     padding: 20px;
@@ -161,13 +144,75 @@ header, footer {
     margin: 0 auto;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adds a slight shadow */
+    z-index: 2; /* Ensures it is above the background */
+    position: relative;
 }
 
+/* Text inside the box */
 .builder-text-box h2,
 .builder-text-box p {
     color: white;
     text-shadow: 2px 2px 4px black; /* Black outline/shadow for the text */
     margin-bottom: 15px;
-    font-family: Arial, sans-serif; /* Use the font of your choice */
+    font-family: Arial, sans-serif; /* Keep font consistent */
+}
+
+/* Two equal boxes under the builder-text-box */
+.builder-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1100px;
+    margin: 20px auto;
+    background: rgba(255, 255, 255, 0.7); /* Lighter transparency */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Left box with buttons */
+.monster-hero-buttons {
+    width: 45%;
+    padding: 20px;
+    background-color: rgba(128, 128, 128, 0.7);
+    border-radius: 10px;
+}
+
+.monster-hero-buttons button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Right box with list of selected items */
+.selected-list {
+    width: 45%;
+    padding: 20px;
+    background-color: rgba(128, 128, 128, 0.7);
+    border-radius: 10px;
+}
+
+.selected-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.selected-list ul li {
+    background-color: #444;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* Show rolls radio button */
+.selected-list label {
+    display: block;
+    margin-top: 20px;
 }
 
