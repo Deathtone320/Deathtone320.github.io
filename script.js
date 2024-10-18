@@ -19,7 +19,9 @@ document.getElementById('contact-form').addEventListener('submit', function(even
     )
     .then(function(response) {
         console.log('SUCCESS!', response.status, response.text);
+        // Optional: Display success message to the user
     }, function(error) {
         console.log('FAILED...', error);
+        // Optional: Display error message to the user
     });
-}); 
+}); // This is the last closing bracket
