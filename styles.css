@@ -1,62 +1,78 @@
-/* Basic reset and structure */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    margin: 0;
-    padding: 0;
+    background-color: #2e2e2e;
+    color: white;
 }
 
-/* Header styles */
-.main-header {
-    background-color: #333;
-    color: white;
+header {
+    text-align: center;
     padding: 20px;
-    text-align: center;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 10px 0;
-}
-
-nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-}
-
-/* Bestiary section */
-.bestiary-section {
-    margin: 20px;
-}
-
-#bestiary-list {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.bestiary-item {
-    background-color: white;
-    border: 1px solid #ddd;
-    margin: 10px;
-    padding: 15px;
-    width: 250px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Footer styles */
-footer {
-    text-align: center;
-    padding: 10px;
     background-color: #333;
-    color: white;
-    position: relative;
-    bottom: 0;
+}
+
+#search-bar {
+    width: 50%;
+    padding: 10px;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+#bestiary, #current-encounter {
+    width: 45%;
+    padding: 10px;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+}
+
+#bestiary .monster-card {
+    display: inline-block;
+    width: 100px;
+    margin: 5px;
+    background-color: #444;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+}
+
+#current-encounter ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#current-encounter li {
+    background-color: #444;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 60%;
+    color: black;
+}
+
+.close {
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
 }
