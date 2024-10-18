@@ -143,7 +143,7 @@ footer {
     background-repeat: no-repeat;
     min-height: 100vh; /* Ensures the section covers full screen */
     padding: 4rem 0; /* Add more padding to create space around the content */
-    position: relative;
+    position: fix;
     z-index: 1;
 }
 
