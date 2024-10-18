@@ -15,6 +15,8 @@ header {
     background: #333;
     color: #fff;
     padding: 1rem 0;
+    position: relative;
+    z-index: 1;
 }
 
 header h1 {
@@ -38,14 +40,14 @@ nav ul li a {
     font-size: 1.2rem;
 }
 
-/* Updated .hero section to prevent image cut-off */
+/* Updated .hero section to fit between header and footer */
 .hero {
-    height: 100vh; /* Full height of the viewport */
-    background-size: cover; /* Ensure the image covers the whole section */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Prevent the image from repeating */
-    background-attachment: fixed; /* Parallax-like effect for larger screens */
-    background-color: #000; /* Fallback background color */
+    min-height: calc(100vh - 150px); /* Dynamically calculates height minus header and footer */
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #000;
 }
 
 .hero h2 {
@@ -95,6 +97,8 @@ footer {
     text-align: center;
     padding: 1rem 0;
     margin-top: 2rem;
+    position: relative;
+    z-index: 1;
 }
 
 form {
@@ -124,8 +128,9 @@ form button {
 /* Media queries for smaller screens */
 @media (max-width: 768px) {
     .hero {
-        background-size: contain; /* Contain image to avoid cutting on smaller screens */
-        background-attachment: scroll; /* Remove parallax on small screens */
+        min-height: calc(100vh - 100px); /* Adjust for smaller screens */
+        background-size: contain;
+        background-attachment: scroll;
     }
 
     .hero h2 {
