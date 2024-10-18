@@ -3,88 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Welcome to MegaQuest, the ultimate fan expansion for HeroQuest!">
-    <title>MegaQuest</title>
-    <link rel="stylesheet" href="styles.css">
-
-    <!-- Latest EmailJS SDK -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script type="text/javascript">
-        window.onload = function() {
-            emailjs.init("mlw1gOv3vSlu-5g1m"); // Make sure the public key is correct
-        };
-    </script>
+    <meta name="description" content="HeroQuest Bestiary">
+    <title>HeroQuest Bestiary V.2</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to styles -->
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Welcome to MegaQuest</h1>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="encounter-builder.html">Encounter Builder</a></li>
-                </ul>
-            </nav>
-        </div>
+    <header class="main-header">
+        <h1>HeroQuest Bestiary V.2</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Bestiary</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- Hero Section with the updated background image -->
-    <section id="home" class="hero" style="background: url('images/MegaquestAwakenedBoxArt.PNG') no-repeat center center/cover;">
-        <div class="container">
-            <h2>The Ultimate Fan Expansion for HeroQuest</h2>
-            <p>Explore new heroes, monsters, and quests!</p>
-            <a href="#features" class="cta-button">Learn More</a>
-        </div>
-    </section>
-
-    <section id="about" class="about">
-        <div class="container">
-            <h2>About MegaQuest</h2>
-            <p>MegaQuest is a comprehensive fan-made expansion that adds new depth to the classic HeroQuest game. With new heroes, monsters, and a campaign system, you'll experience the game in a whole new way.</p>
-        </div>
-    </section>
-
-    <section id="features" class="features">
-        <div class="container">
-            <h2>Features</h2>
-            <ul>
-                <li>15 unique heroes with custom stats</li>
-                <li>New monsters with AI-driven actions</li>
-                <li>Campaign deck system for extended play</li>
-            </ul>
-        </div>
-    </section>
-
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>Contact Us</h2>
-            <form id="contact-form">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="4" required></textarea>
-
-                <button type="submit">Send Message</button>
-            </form>
-            <p id="success-message" style="display:none; color:green;">Message sent successfully!</p>
-            <p id="error-message" style="display:none; color:red;">Failed to send message. Please try again later.</p>
+    <section class="bestiary-section">
+        <div id="bestiary-list">
+            <!-- Bestiary items will be loaded here dynamically -->
         </div>
     </section>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2024 MegaQuest. All Rights Reserved.</p>
-        </div>
+        <p>&copy; 2024 HeroQuest Bestiary. All Rights Reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js"></script> <!-- Link to the script file -->
 </body>
 </html>
