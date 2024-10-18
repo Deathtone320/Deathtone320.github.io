@@ -7,13 +7,14 @@
     <meta name="description" content="Welcome to MegaQuest, the ultimate fan expansion for HeroQuest!">
     <title>MegaQuest</title>
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Latest EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
-    (function() {
-        emailjs.init("mlw1gOv3vSlu-5g1m"); // Your EmailJS public key
-    })();
-</script>
-
+        window.onload = function() {
+            emailjs.init("mlw1gOv3vSlu-5g1m"); // Make sure the public key is correct
+        };
+    </script>
 </head>
 <body>
     <header>
@@ -30,7 +31,7 @@
         </div>
     </header>
 
-    <!-- Updated hero section with new background image -->
+    <!-- Hero Section with the updated background image -->
     <section id="home" class="hero" style="background: url('images/MegaquestAwakenedBoxArt.PNG') no-repeat center center/cover;">
         <div class="container">
             <h2>The Ultimate Fan Expansion for HeroQuest</h2>
