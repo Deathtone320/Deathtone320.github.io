@@ -153,3 +153,21 @@ header, footer {
     z-index: 1;
 }
 
+.builder-text-box {
+    background-color: rgba(128, 128, 128, 0.7); /* Semi-transparent gray */
+    padding: 20px;
+    border-radius: 15px; /* Curved corners */
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adds a slight shadow */
+}
+
+.builder-text-box h2,
+.builder-text-box p {
+    color: white;
+    text-shadow: 2px 2px 4px black; /* Black outline/shadow for the text */
+    margin-bottom: 15px;
+    font-family: Arial, sans-serif; /* Use the font of your choice */
+}
+
