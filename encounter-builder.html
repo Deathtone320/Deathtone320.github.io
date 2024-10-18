@@ -20,17 +20,16 @@
         </div>
     </header>
 
-  <!-- Two equal boxes next to each other -->
+    <!-- Two equal boxes next to each other -->
     <div class="builder-container">
         <!-- Left box for buttons -->
         <div class="monster-hero-buttons">
             <h3>Monsters/Heroes</h3>
-            <button onclick="addToList('Goblin')">Goblin</button>
-            <button onclick="addToList('Orc')">Orc</button>
-            <button onclick="addToList('Troll')">Troll</button>
-            <button onclick="addToList('Knight')">Knight</button>
-            <button onclick="addToList('Wizard')">Wizard</button>
-            <!-- Add more buttons as needed -->
+            <button>Goblin</button>
+            <button>Orc</button>
+            <button>Troll</button>
+            <button>Knight</button>
+            <button>Wizard</button>
         </div>
 
         <!-- Right box for the list -->
@@ -38,12 +37,10 @@
             <h3>Selected Monsters/Heroes</h3>
             <ul id="selected-items"></ul>
             <label>
-                <input type="radio" id="show-rolls" onclick="toggleRolls()"> Show Rolls
+                <input type="radio" id="show-rolls"> Show Rolls
             </label>
         </div>
     </div>
-</section>
-
 
     <footer class="main-footer">
         <div class="custom-container">
@@ -51,6 +48,6 @@
         </div>
     </footer>
 
-    <script src="script.js"></script> <!-- Assuming this is the script that manages addToList -->
+    <script src="script.js"></script>
 </body>
 </html>
