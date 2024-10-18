@@ -26,39 +26,32 @@
             <p>Select monsters, set up the encounter, and track combat progress.</p>
         </div>
 
-
-
-        
-<section class="builder">
-    <div class="builder-container">
-        <h2>Create Your Encounter</h2>
-        <div class="row">
-            <div class="column">
-                <h3>Monsters/Heroes</h3>
-                <button onclick="addToList(this)">Goblin</button>
-                <button onclick="addToList(this)">Orc</button>
-                <button onclick="addToList(this)">Troll</button>
-                <button onclick="addToList(this)">Knight</button>
-                <button onclick="addToList(this)">Wizard</button>
-            </div>
-            <div class="column">
-                <h3>Selected Monsters/Heroes</h3>
-                <ul id="monster-list"></ul>
-                <label>
-                    <input type="checkbox" id="show-rolls" onclick="toggleRolls()"> Show Rolls
-                </label>
-            </div>
+        <!-- Left box: Monsters/Heroes -->
+        <div class="monster-hero-buttons">
+            <h3>Monsters/Heroes</h3>
+            <button onclick="addToList(this)">Goblin</button>
+            <button onclick="addToList(this)">Orc</button>
+            <button onclick="addToList(this)">Troll</button>
+            <button onclick="addToList(this)">Knight</button>
+            <button onclick="addToList(this)">Wizard</button>
         </div>
-    </div>
-</section>
 
-
-    
+        <!-- Right box: Selected Monsters/Heroes -->
+        <div class="selected-list">
+            <h3>Selected Monsters/Heroes</h3>
+            <ul id="monster-list"></ul>
+            <label>
+                <input type="checkbox" id="show-rolls" onclick="toggleRolls()"> Show Rolls
+            </label>
+        </div>
+    </section>
 
     <footer class="main-footer">
         <div class="custom-container">
             <p>&copy; 2024 MegaQuest. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <script src="script.js"></script> <!-- Assuming this is the script that manages addToList -->
 </body>
 </html>
