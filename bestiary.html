@@ -22,12 +22,26 @@
     <section class="bestiary-section">
         <h1>Bestiary</h1>
         <div class="bestiary-grid">
-            <!-- Add your monster images here with their stats and abilities -->
+            <div class="monster-card" oncontextmenu="handleRightClick(event, 'Goblin', 'goblin-card.png')">
+                <img src="images/goblin.png" alt="Goblin">
+                <p>Goblin</p>
+            </div>
+            <div class="monster-card" oncontextmenu="handleRightClick(event, 'Orc', 'orc-card.png')">
+                <img src="images/orc.png" alt="Orc">
+                <p>Orc</p>
+            </div>
+            <div class="monster-card" oncontextmenu="handleRightClick(event, 'Fimir', 'fimir-card.png')">
+                <img src="images/fimir.png" alt="Fimir">
+                <p>Fimir</p>
+            </div>
+            <!-- Add more monsters similarly -->
         </div>
     </section>
 
     <footer>
         <p>&copy; 2024 MegaQuest Awakened. All Rights Reserved.</p>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
