@@ -15,8 +15,6 @@ header {
     background: #333;
     color: #fff;
     padding: 1rem 0;
-    position: relative;
-    z-index: 1;
 }
 
 header h1 {
@@ -40,14 +38,12 @@ nav ul li a {
     font-size: 1.2rem;
 }
 
-/* Updated .hero section to fit between header and footer */
+/* Updated .hero section to show the full image without cutting it off */
 .hero {
-    min-height: calc(100vh - 150px); /* Dynamically calculates height minus header and footer */
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-color: #000;
+    height: calc(100vh - 150px); /* 100% of viewport minus the height of header and footer */
+    background: url('images/MegaquestAwakenedBoxArt.PNG') no-repeat center center;
+    background-size: contain; /* Ensure the full image is always visible */
+    background-color: #000; /* Add a fallback background color */
 }
 
 .hero h2 {
@@ -97,8 +93,6 @@ footer {
     text-align: center;
     padding: 1rem 0;
     margin-top: 2rem;
-    position: relative;
-    z-index: 1;
 }
 
 form {
@@ -128,9 +122,8 @@ form button {
 /* Media queries for smaller screens */
 @media (max-width: 768px) {
     .hero {
-        min-height: calc(100vh - 100px); /* Adjust for smaller screens */
-        background-size: contain;
-        background-attachment: scroll;
+        height: calc(100vh - 100px); /* Adjust height for smaller screens */
+        background-size: contain; /* Always show the full image */
     }
 
     .hero h2 {
