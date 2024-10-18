@@ -123,11 +123,34 @@ footer {
     }
 }
 
+/* Adjust builder background */
 .builder {
     background-image: url('images/encounter-builder-background.PNG');
-    background-size: cover; /* Ensures the image covers the section */
+    background-size: cover; /* Ensure the background covers the section */
+    background-attachment: fixed; /* Keeps the image in place when scrolling */
     background-position: center;
     background-repeat: no-repeat;
-    height: 100vh; /* Set to full viewport height */
-    padding: 2rem 0;
+    min-height: 100vh; /* Ensures the section covers full screen */
+    position: relative;
+    z-index: 0; /* Stays behind all content */
+    padding: 4rem 0;
 }
+
+/* Header and footer */
+header, footer {
+    z-index: 2; /* Ensures the panels are above the background */
+    position: relative;
+}
+
+/* Container styles */
+.builder-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent background for contrast */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1;
+}
+
