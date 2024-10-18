@@ -8,20 +8,25 @@ document.getElementById('contact-form').addEventListener('submit', function(even
 
     // Send the email using EmailJS
     emailjs.send(
-        'service_z7ywxbv',  // Your service ID
-        'template_e6cnynh', // Your template ID
+        'service_z7ywxbv',  // Your EmailJS service ID
+        'template_e6cnynh', // Your EmailJS template ID
         {
             from_name: name,
             from_email: email,
             message: message
         },
-        'mlw1gOv3vSlu-5g1m' // Your public API key
+        'mlw1gOv3vSlu-5g1m' // Your EmailJS public API key
     )
     .then(function(response) {
         console.log('SUCCESS!', response.status, response.text);
-        // Optional: Display success message to the user
+        // Show success message to the user
+        document.getElementById('success-message').style.display = 'block';
+        document.getElementById('error-message').style.display = 'none';
+        document.getElementById('contact-form').reset(); // Reset the form fields
     }, function(error) {
         console.log('FAILED...', error);
-        // Optional: Display error message to the user
+        // Show error message to the user
+        document.getElementById('error-message').style.display = 'block';
+        document.getElementById('success-message').style.display = 'none';
     });
-}); // This is the last closing bracket
+}); 
