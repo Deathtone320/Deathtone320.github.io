@@ -14,8 +14,7 @@ document.getElementById('contact-form').addEventListener('submit', function(even
             from_name: name,
             from_email: email,
             message: message
-        },
-        'mlw1gOv3vSlu-5g1m' // Your EmailJS public API key
+        }
     )
     .then(function(response) {
         console.log('SUCCESS!', response.status, response.text);
@@ -29,4 +28,4 @@ document.getElementById('contact-form').addEventListener('submit', function(even
         document.getElementById('error-message').style.display = 'block';
         document.getElementById('success-message').style.display = 'none';
     });
-}); 
+});
