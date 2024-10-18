@@ -1,8 +1,17 @@
 const bestiary = [
-    { name: 'Goblin', img: 'path_to_goblin_image', stats: 'HP: 20, Attack: 5' },
-    { name: 'Orc', img: 'path_to_orc_image', stats: 'HP: 40, Attack: 10' },
+    { name: 'Goblin', img: '/images/goblin.png', stats: 'HP: 20, Attack: 5' },
+    { name: 'Orc', img: '/images/orc.png', stats: 'HP: 40, Attack: 10' },
+    { name: 'Zombie', img: '/images/orc.png', stats: 'HP: 40, Attack: 10' },
+    { name: 'Mummy', img: '/images/orc.png', stats: 'HP: 40, Attack: 10' },
+    { name: 'Dread Warrior', img: '/images/orc.png', stats: 'HP: 40, Attack: 10' },
+    { name: 'Gargoyle', img: '/images/orc.png', stats: 'HP: 40, Attack: 10' },
+    { name: 'Skeleton', img: '/images/orc.png', stats: 'HP: 40, Attack: 10' },
+    { name: 'Zombie', img: '/images/orc.png', stats: 'HP: 40, Attack: 10' },
+    { name: 'Abomination', img: '/images/orc.png', stats: 'HP: 40, Attack: 10' },
+    { name: 'Dark Wizard', img: '/images/orc.png', stats: 'HP: 40, Attack: 10' },
     // Add more monsters/heroes...
 ];
+
 
 const encounter = [];
 const encounterList = document.getElementById('encounter-list');
