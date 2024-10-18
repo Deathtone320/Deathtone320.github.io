@@ -6,88 +6,128 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #1a1a1a; /* Dark background similar to Dave's Geek Tools */
-    color: #fff; /* White text */
     line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
 }
 
-/* Header styling */
-.main-header {
-    background-color: #111;
+header {
+    background: #333;
+    color: #fff;
     padding: 1rem 0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    position: relative;
+    z-index: 2;
 }
 
-.main-header h1 {
+header h1 {
     text-align: center;
-    font-size: 2rem;
     margin-bottom: 1rem;
 }
 
-.main-header nav ul {
+nav ul {
     display: flex;
     justify-content: center;
     list-style: none;
 }
 
-.main-header nav ul li {
+nav ul li {
     margin: 0 1rem;
 }
 
-.main-header nav ul li a {
+nav ul li a {
     color: #fff;
     text-decoration: none;
     font-size: 1.2rem;
-    padding: 0.5rem 1rem;
-    background-color: #ff5722; /* Bright orange for contrast */
+}
+
+.hero {
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('images/MegaquestAwakenedBoxArt.PNG') no-repeat center center;
+    background-size: contain; /* Ensure the image is fully visible */
+    background-position: top; /* Keeps image anchored to the top */
+    background-color: #000;
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 1; /* Ensures content stays above the background */
+    position: relative;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 1.5rem;
+}
+
+.cta-button {
+    padding: 0.8rem 2rem;
+    background: #ff5722;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
     border-radius: 5px;
 }
 
-/* Footer styling */
-.main-footer {
-    background-color: #111;
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+section {
+    padding: 2rem 0;
+}
+
+.about, .features, .contact {
+    background: #fff;
+    margin-top: 2rem;
+}
+
+footer {
+    background: #333;
+    color: #fff;
     text-align: center;
     padding: 1rem 0;
+    margin-top: 2rem;
+    position: relative;
+    z-index: 1;
 }
 
-/* Custom container for page sections */
-.custom-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
+/* Media queries for smaller screens */
+@media (max-width: 768px) {
+    .hero {
+        background-size: contain;
+        background-position: center;
+    }
+
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+
+    .cta-button {
+        font-size: 1rem;
+    }
 }
 
-/* Encounter Builder Section */
 .builder {
-    background-color: #222; /* Dark section background */
-    padding: 4rem 0;
-    text-align: center;
-}
-
-.builder h2 {
-    color: #ff5722; /* Accent color similar to the buttons */
-    margin-bottom: 2rem;
-}
-
-.builder p {
-    font-size: 1.2rem;
-    color: #ccc; /* Light gray for contrast */
-}
-
-/* Button Styling */
-button, a.cta-button {
-    padding: 0.8rem 1.5rem;
-    background-color: #ff5722;
-    color: white;
-    text-decoration: none;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-button:hover, a.cta-button:hover {
-    background-color: #ff4511;
+    background-image: url('images/encounter-builder-background.PNG');
+    background-size: cover; /* Ensures the image covers the section */
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; /* Set to full viewport height */
+    padding: 2rem 0;
 }
