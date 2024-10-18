@@ -1,26 +1,58 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const bestiaryData = [
-        { name: "Goblin", description: "A small, green, and pesky creature." },
-        { name: "Orc", description: "A large and brutish warrior." },
-        { name: "Troll", description: "A giant monster with powerful regeneration." },
-        { name: "Knight", description: "A valiant hero with strong defense." },
-        { name: "Wizard", description: "A master of arcane magic." }
-    ];
+const bestiary = [
+    { name: 'Goblin', img: 'path_to_goblin_image', stats: 'HP: 20, Attack: 5' },
+    { name: 'Orc', img: 'path_to_orc_image', stats: 'HP: 40, Attack: 10' },
+    // Add more monsters/heroes...
+];
 
-    const bestiaryList = document.getElementById('bestiary-list');
+const encounter = [];
+const encounterList = document.getElementById('encounter-list');
 
-    // Function to load bestiary items
-    function loadBestiaryItems() {
-        bestiaryData.forEach(item => {
-            const bestiaryItemDiv = document.createElement('div');
-            bestiaryItemDiv.classList.add('bestiary-item');
-            bestiaryItemDiv.innerHTML = `
-                <h3>${item.name}</h3>
-                <p>${item.description}</p>
-            `;
-            bestiaryList.appendChild(bestiaryItemDiv);
-        });
-    }
-
-    loadBestiaryItems();
+// Populate bestiary
+const bestiarySection = document.getElementById('bestiary');
+bestiary.forEach((monster, index) => {
+    const card = document.createElement('div');
+    card.classList.add('monster-card');
+    card.innerHTML = `<img src="${monster.img}" alt="${monster.name}">
+                      <p>${monster.name}</p>`;
+    card.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        showContextMenu(monster, index, e);
+    });
+    bestiarySection.appendChild(card);
 });
+
+// Right-click context menu
+function showContextMenu(monster, index, e) {
+    const choice = confirm(`Add ${monster.name} to Encounter? Click 'Cancel' to View.`);
+    if (choice) {
+        addToEncounter(monster);
+    } else {
+        viewStats(monster);
+    }
+}
+
+function addToEncounter(monster) {
+    const roll = Math.floor(Math.random() * 20) + 1;
+    encounter.push({ ...monster, roll });
+    encounter.sort((a, b) => b.roll - a.roll); // Sort by highest roll
+    updateEncounterList();
+}
+
+function updateEncounterList() {
+    encounterList.innerHTML = '';
+    encounter.forEach(monster => {
+        const li = document.createElement('li');
+        li.textContent = `${monster.name} - Roll: ${monster.roll}`;
+        encounterList.appendChild(li);
+    });
+}
+
+function viewStats(monster) {
+    document.getElementById('monster-hero-stats').textContent = `${monster.name} - ${monster.stats}`;
+    document.getElementById('stats-modal').style.display = 'block';
+}
+
+// Modal close function
+document.querySelector('.close').onclick = function() {
+    document.getElementById('stats-modal').style.display = 'none';
+};
