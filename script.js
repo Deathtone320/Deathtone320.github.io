@@ -52,6 +52,17 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+document.addEventListener("DOMContentLoaded", function() {
+    // Ensure buttons for monsters/heroes function correctly
+    const monsterHeroButtons = document.querySelectorAll('.monster-hero-buttons button');
+    if (monsterHeroButtons.length > 0) {
+        monsterHeroButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                addToList(this.textContent);
+            });
+        });
+    }
+
     // Initialize an empty array for monsters/heroes
     let selectedMonstersHeroes = [];
 
@@ -61,8 +72,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // Function to add a clicked monster/hero to the list
-    function addToList(button) {
-        const name = button.textContent;
+    function addToList(name) {
         const roll = rollDice();
 
         // Add the monster/hero along with their roll to the list
@@ -77,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Function to update the displayed list on the right panel
     function updateList() {
-        const list = document.getElementById('monster-list');
+        const list = document.getElementById('selected-items');
         list.innerHTML = ''; // Clear the existing list
 
         selectedMonstersHeroes.forEach(item => {
@@ -88,9 +98,13 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // Function to show/hide rolls based on checkbox
+    document.getElementById('show-rolls').addEventListener('change', function() {
+        toggleRolls();
+    });
+
     function toggleRolls() {
         const isChecked = document.getElementById('show-rolls').checked;
-        const listItems = document.querySelectorAll('#monster-list li');
+        const listItems = document.querySelectorAll('#selected-items li');
 
         listItems.forEach((item, index) => {
             if (isChecked) {
@@ -100,7 +114,4 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     }
-
-    // Assign toggleRolls function globally
-    window.toggleRolls = toggleRolls;
 });
