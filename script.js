@@ -38,41 +38,40 @@ document.getElementById('contact-form').addEventListener('submit', function(even
 });
 
 
-let selectedItems = [];
+// Array to store selected monsters/heroes
+let selectedMonsters = [];
 
-function addToList(item) {
-    let roll = Math.floor(Math.random() * 20) + 1; // Roll between 1 and 20
-    selectedItems.push({ name: item, roll: roll });
-    sortAndDisplayList();
+// Function to add the clicked monster/hero to the list
+function addToList(monster) {
+    // Generate a random number between 1 and 20
+    const roll = Math.floor(Math.random() * 20) + 1;
+    
+    // Add the monster/hero along with the rolled number to the list
+    selectedMonsters.push({ name: monster, roll: roll });
+    
+    // Sort the array by the roll in descending order
+    selectedMonsters.sort((a, b) => b.roll - a.roll);
+    
+    // Update the displayed list
+    updateList();
 }
 
-function sortAndDisplayList() {
-    // Sort the list by the roll value (highest to lowest)
-    selectedItems.sort((a, b) => b.roll - a.roll);
+// Function to update the displayed list of selected monsters/heroes
+function updateList() {
+    const listElement = document.getElementById('selected-list');
+    listElement.innerHTML = ''; // Clear the list
 
-    const listElement = document.getElementById('selected-items');
-    listElement.innerHTML = ''; // Clear current list
-
-    // Display the sorted list
-    selectedItems.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = item.name;
-        listElement.appendChild(li);
-    });
-
-    toggleRolls();
-}
-
-function toggleRolls() {
-    const showRolls = document.getElementById('show-rolls').checked;
-    const listElement = document.getElementById('selected-items');
-    listElement.innerHTML = ''; // Clear current list
-
-    // Display the sorted list with or without rolls
-    selectedItems.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = item.name + (showRolls ? ` (Roll: ${item.roll})` : '');
-        listElement.appendChild(li);
+    // Iterate through the selected monsters array
+    selectedMonsters.forEach(monster => {
+        const listItem = document.createElement('div');
+        listItem.textContent = `${monster.name} - Roll: ${monster.roll}`;
+        listElement.appendChild(listItem);
     });
 }
+
+// Event listener for the 'Show Rolls' radio button
+document.getElementById('show-rolls').addEventListener('change', function () {
+    updateList(); // Update the list when the checkbox is toggled
+});
+
 
