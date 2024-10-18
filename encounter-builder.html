@@ -25,7 +25,33 @@
             <h2>Create Your Encounter</h2>
             <p>Select monsters, set up the encounter, and track combat progress.</p>
         </div>
-    </section>
+
+        
+        <!-- Two equal boxes next to each other -->
+    <div class="builder-container">
+        <!-- Left box for buttons -->
+        <div class="monster-hero-buttons">
+            <h3>Monsters/Heroes</h3>
+            <button onclick="addToList('Goblin')">Goblin</button>
+            <button onclick="addToList('Orc')">Orc</button>
+            <button onclick="addToList('Troll')">Troll</button>
+            <button onclick="addToList('Knight')">Knight</button>
+            <button onclick="addToList('Wizard')">Wizard</button>
+            <!-- Add more buttons as needed -->
+        </div>
+
+        <!-- Right box for the list -->
+        <div class="selected-list">
+            <h3>Selected Monsters/Heroes</h3>
+            <ul id="selected-items"></ul>
+            <label>
+                <input type="radio" id="show-rolls" onclick="toggleRolls()"> Show Rolls
+            </label>
+        </div>
+    </div>
+</section>
+
+    
 
     <footer class="main-footer">
         <div class="custom-container">
