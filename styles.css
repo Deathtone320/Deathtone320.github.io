@@ -134,8 +134,9 @@ footer {
     width: 100%;
     position: relative;
     display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center the content vertically */
+    justify-content: space-around; /* Ensures the boxes are spaced properly */
+    align-items: flex-start;
+    padding-top: 20px; /* Adds space at the top */
 }
 
 /* Gray transparent box for text */
@@ -144,37 +145,16 @@ footer {
     padding: 20px;
     border-radius: 15px;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 0 auto 20px auto;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     z-index: 2;
     position: relative;
 }
 
-/* Text inside the box */
-.builder-text-box h2,
-.builder-text-box p {
-    color: white;
-    text-shadow: 2px 2px 4px black;
-    margin-bottom: 15px;
-    font-family: Arial, sans-serif;
-}
-
-/* Two equal boxes under the builder-text-box */
-.builder-container {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1100px;
-    margin: 20px auto;
-    background: rgba(255, 255, 255, 0.7);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Left box with buttons */
+/* Monster/Hero Buttons (left box) */
 .monster-hero-buttons {
-    width: 45%;
+    width: 40%; /* Adjust this width as per your layout needs */
     padding: 20px;
     background-color: rgba(128, 128, 128, 0.7);
     border-radius: 10px;
@@ -197,9 +177,9 @@ footer {
     background-color: #555;
 }
 
-/* Right box with list of selected items */
+/* Selected Monsters/Heroes (right box) */
 .selected-list {
-    width: 45%;
+    width: 40%; /* Adjust this width as per your layout needs */
     padding: 20px;
     background-color: rgba(128, 128, 128, 0.7);
     border-radius: 10px;
