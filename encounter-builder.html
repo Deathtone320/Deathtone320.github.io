@@ -29,23 +29,29 @@
 
 
         
-<div class="builder-panel">
-    <div class="builder-left-panel">
-        <button onclick="addToList('Goblin')">Goblin</button>
-        <button onclick="addToList('Orc')">Orc</button>
-        <button onclick="addToList('Troll')">Troll</button>
-        <button onclick="addToList('Knight')">Knight</button>
-        <button onclick="addToList('Wizard')">Wizard</button>
+<section class="builder">
+    <div class="builder-container">
+        <h2>Create Your Encounter</h2>
+        <div class="row">
+            <div class="column">
+                <h3>Monsters/Heroes</h3>
+                <button onclick="addToList(this)">Goblin</button>
+                <button onclick="addToList(this)">Orc</button>
+                <button onclick="addToList(this)">Troll</button>
+                <button onclick="addToList(this)">Knight</button>
+                <button onclick="addToList(this)">Wizard</button>
+            </div>
+            <div class="column">
+                <h3>Selected Monsters/Heroes</h3>
+                <ul id="monster-list"></ul>
+                <label>
+                    <input type="checkbox" id="show-rolls" onclick="toggleRolls()"> Show Rolls
+                </label>
+            </div>
+        </div>
     </div>
-    <div class="builder-right-panel">
-        <div id="selected-list"></div>
-        <label>
-            <input type="radio" id="show-rolls" name="show-rolls" /> Show Rolls
-        </label>
-    </div>
-</div>
-
 </section>
+
 
     
 
