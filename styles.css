@@ -1,209 +1,62 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* Basic reset and structure */
 body {
     font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #873e23;
+    background-color: #f4f4f4;
     color: #333;
+    margin: 0;
+    padding: 0;
 }
 
-header {
-    background: #333;
-    color: #fff;
-    padding: 1rem 0;
-    position: relative;
-    z-index: 2;
-}
-
-header h1 {
+/* Header styles */
+.main-header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
     text-align: center;
-    margin-bottom: 1rem;
 }
 
 nav ul {
-    display: flex;
-    justify-content: center;
     list-style: none;
+    padding: 0;
+    margin: 10px 0;
 }
 
 nav ul li {
-    margin: 0 1rem;
+    display: inline;
+    margin: 0 15px;
 }
 
 nav ul li a {
-    color: #fff;
+    color: white;
     text-decoration: none;
-    font-size: 1.2rem;
 }
 
-.hero {
-    height: 100vh; /* Full viewport height */
+/* Bestiary section */
+.bestiary-section {
+    margin: 20px;
+}
+
+#bestiary-list {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background: url('images/MegaquestAwakenedBoxArt.PNG') no-repeat center center;
-    background-size: contain; /* Ensure the image is fully visible */
-    background-position: top; /* Keeps image anchored to the top */
-    background-color: #000;
+    flex-wrap: wrap;
 }
 
-.hero-content {
-    text-align: center;
-    z-index: 1; /* Ensures content stays above the background */
-    position: relative;
+.bestiary-item {
+    background-color: white;
+    border: 1px solid #ddd;
+    margin: 10px;
+    padding: 15px;
+    width: 250px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.hero h2 {
-    font-size: 2.5rem;
-    color: #fff;
-    margin-bottom: 1rem;
-}
-
-.hero p {
-    font-size: 1.5rem;
-    color: #fff;
-    margin-bottom: 1.5rem;
-}
-
-.cta-button {
-    padding: 0.8rem 2rem;
-    background: #ff5722;
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.2rem;
-    border-radius: 5px;
-}
-
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 1rem;
-}
-
-section {
-    padding: 2rem 0;
-}
-
-.about, .features, .contact {
-    background: #fff;
-    margin-top: 2rem;
-}
-
+/* Footer styles */
 footer {
-    background: #333;
-    color: #fff;
     text-align: center;
-    padding: 1rem 0;
-    margin-top: 2rem;
-    position: relative;
-    z-index: 1;
-}
-
-/* Media queries for smaller screens */
-@media (max-width: 768px) {
-    .hero {
-        background-size: contain;
-        background-position: center;
-    }
-
-    .hero h2 {
-        font-size: 2rem;
-    }
-
-    .hero p {
-        font-size: 1.2rem;
-    }
-
-    .cta-button {
-        font-size: 1rem;
-    }
-}
-
-/* Full viewport builder section */
-.builder {
-    background-image: url('images/encounter-builder-background.PNG');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: brown;
-    min-height: 100vh;
-    width: 100%;
-    position: relative;
-    display: flex;
-    justify-content: space-around; /* Ensures the boxes are spaced properly */
-    align-items: flex-start;
-    padding-top: 20px; /* Adds space at the top */
-}
-
-/* Gray transparent box for text */
-.builder-text-box {
-    background-color: rgba(128, 128, 128, 0.7);
-    padding: 20px;
-    border-radius: 15px;
-    max-width: 600px;
-    margin: 0 auto 20px auto;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    z-index: 2;
-    position: relative;
-}
-
-/* Monster/Hero Buttons (left box) */
-.monster-hero-buttons {
-    width: 40%; /* Adjust this width as per your layout needs */
-    padding: 20px;
-    background-color: rgba(128, 128, 128, 0.7);
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.monster-hero-buttons button {
-    display: block;
-    width: 100%;
-    margin-bottom: 10px;
     padding: 10px;
     background-color: #333;
     color: white;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
-
-.monster-hero-buttons button:hover {
-    background-color: #555;
-}
-
-/* Selected Monsters/Heroes (right box) */
-.selected-list {
-    width: 40%; /* Adjust this width as per your layout needs */
-    padding: 20px;
-    background-color: rgba(128, 128, 128, 0.7);
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.selected-list ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.selected-list ul li {
-    background-color: #444;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-/* Show rolls radio button */
-.selected-list label {
-    display: block;
-    margin-top: 20px;
-    font-size: 1rem;
-    color: white;
-}
-
