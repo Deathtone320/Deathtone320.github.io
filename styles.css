@@ -38,17 +38,29 @@ nav ul li a {
     font-size: 1.2rem;
 }
 
-/* Updated .hero section to show the full image without cutting it off */
+/* Hero section updated to fit between header and footer */
 .hero {
-    height: calc(100vh - 150px); /* 100% of viewport minus the height of header and footer */
+    height: calc(100vh - 150px); /* Adjust height to fit between header and footer */
     background: url('images/MegaquestAwakenedBoxArt.PNG') no-repeat center center;
-    background-size: contain; /* Ensure the full image is always visible */
-    background-color: #000; /* Add a fallback background color */
+    background-size: contain; /* Ensure full image is always visible */
+    background-color: #000; /* Fallback color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 1; /* Ensures content stays above the background */
+    position: relative;
 }
 
 .hero h2 {
     font-size: 2.5rem;
     color: #fff;
+    margin-bottom: 1rem;
 }
 
 .hero p {
@@ -95,35 +107,12 @@ footer {
     margin-top: 2rem;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-form label {
-    margin-bottom: 0.5rem;
-}
-
-form input, form textarea {
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-form button {
-    padding: 0.7rem;
-    background: #333;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-}
-
 /* Media queries for smaller screens */
 @media (max-width: 768px) {
     .hero {
-        height: calc(100vh - 100px); /* Adjust height for smaller screens */
-        background-size: contain; /* Always show the full image */
+        height: calc(100vh - 100px); /* Fit between smaller header and footer */
+        background-size: contain; /* Keep the full image visible */
+        background-attachment: scroll;
     }
 
     .hero h2 {
