@@ -38,13 +38,14 @@ nav ul li a {
     font-size: 1.2rem;
 }
 
+/* Updated .hero section to ensure full image is displayed */
 .hero {
     height: 80vh; /* 80% of the viewport height */
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-size: contain; /* Ensures the entire image is visible */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-color: #000; /* Add a fallback background color if the image fails to load */
 }
-
 
 .hero h2 {
     font-size: 2.5rem;
