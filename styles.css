@@ -38,13 +38,14 @@ nav ul li a {
     font-size: 1.2rem;
 }
 
-/* Updated .hero section to ensure full image is displayed */
+/* Updated .hero section to prevent image cut-off */
 .hero {
-    height: 80vh; /* 80% of the viewport height */
-    background-size: contain; /* Ensures the entire image is visible */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
-    background-color: #000; /* Add a fallback background color if the image fails to load */
+    height: 100vh; /* Full height of the viewport */
+    background-size: cover; /* Ensure the image covers the whole section */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-attachment: fixed; /* Parallax-like effect for larger screens */
+    background-color: #000; /* Fallback background color */
 }
 
 .hero h2 {
@@ -118,4 +119,24 @@ form button {
     color: #fff;
     border: none;
     cursor: pointer;
+}
+
+/* Media queries for smaller screens */
+@media (max-width: 768px) {
+    .hero {
+        background-size: contain; /* Contain image to avoid cutting on smaller screens */
+        background-attachment: scroll; /* Remove parallax on small screens */
+    }
+
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+
+    .cta-button {
+        font-size: 1rem;
+    }
 }
