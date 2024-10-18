@@ -36,3 +36,43 @@ document.getElementById('contact-form').addEventListener('submit', function(even
         console.log("Error: Some form values are missing");
     }
 });
+
+
+let selectedItems = [];
+
+function addToList(item) {
+    let roll = Math.floor(Math.random() * 20) + 1; // Roll between 1 and 20
+    selectedItems.push({ name: item, roll: roll });
+    sortAndDisplayList();
+}
+
+function sortAndDisplayList() {
+    // Sort the list by the roll value (highest to lowest)
+    selectedItems.sort((a, b) => b.roll - a.roll);
+
+    const listElement = document.getElementById('selected-items');
+    listElement.innerHTML = ''; // Clear current list
+
+    // Display the sorted list
+    selectedItems.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item.name;
+        listElement.appendChild(li);
+    });
+
+    toggleRolls();
+}
+
+function toggleRolls() {
+    const showRolls = document.getElementById('show-rolls').checked;
+    const listElement = document.getElementById('selected-items');
+    listElement.innerHTML = ''; // Clear current list
+
+    // Display the sorted list with or without rolls
+    selectedItems.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item.name + (showRolls ? ` (Roll: ${item.roll})` : '');
+        listElement.appendChild(li);
+    });
+}
+
