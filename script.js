@@ -122,6 +122,4 @@ document.addEventListener("DOMContentLoaded", function() {
                 item.textContent = selectedMonstersHeroes[index].name;
             }
         });
-    }
-});
 
