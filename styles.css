@@ -15,6 +15,8 @@ header {
     background: #333;
     color: #fff;
     padding: 1rem 0;
+    position: relative;
+    z-index: 2;
 }
 
 header h1 {
@@ -38,17 +40,15 @@ nav ul li a {
     font-size: 1.2rem;
 }
 
-/* Hero section updated to fit between header and footer */
 .hero {
-    height: calc(100vh - 150px); /* Adjust height to fit between header and footer */
-    background: url('images/MegaquestAwakenedBoxArt.PNG') no-repeat center center;
-    background-size: contain; /* Ensure full image is always visible */
-    background-color: #000; /* Fallback color */
+    height: 100vh; /* Full viewport height */
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
-    box-sizing: border-box;
+    background: url('images/MegaquestAwakenedBoxArt.PNG') no-repeat center center;
+    background-size: contain; /* Ensure the image is fully visible */
+    background-position: top; /* Keeps image anchored to the top */
+    background-color: #000;
 }
 
 .hero-content {
@@ -93,26 +93,21 @@ section {
     margin-top: 2rem;
 }
 
-.about p, .features ul {
-    margin: 1rem 0;
-    font-size: 1.1rem;
-    line-height: 1.6;
-}
-
 footer {
     background: #333;
     color: #fff;
     text-align: center;
     padding: 1rem 0;
     margin-top: 2rem;
+    position: relative;
+    z-index: 1;
 }
 
 /* Media queries for smaller screens */
 @media (max-width: 768px) {
     .hero {
-        height: calc(100vh - 100px); /* Fit between smaller header and footer */
-        background-size: contain; /* Keep the full image visible */
-        background-attachment: scroll;
+        background-size: contain;
+        background-position: center;
     }
 
     .hero h2 {
