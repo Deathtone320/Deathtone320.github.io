@@ -9,9 +9,8 @@ document.getElementById('contact-form').addEventListener('submit', function(even
     // Log form values to ensure they're correctly retrieved
     console.log("Form Values:", { name, email, message });
 
-    // Check if form values are correctly retrieved before sending
+    // Send the email using EmailJS
     if (name && email && message) {
-        // Send the email using EmailJS
         emailjs.send(
             'service_z7ywxbv',  // Your EmailJS service ID
             'template_e6cnynh', // Your EmailJS template ID
