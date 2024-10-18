@@ -20,31 +20,29 @@
         </div>
     </header>
 
-    <section class="builder">
-        <div class="builder-text-box">
-            <h2>Create Your Encounter</h2>
-            <p>Select monsters, set up the encounter, and track combat progress.</p>
+<section class="builder">
+    <div class="builder-container">
+        <h2>Create Your Encounter</h2>
+        <div class="row">
+            <div class="column">
+                <h3>Monsters/Heroes</h3>
+                <button>Goblin</button>
+                <button>Orc</button>
+                <button>Troll</button>
+                <button>Knight</button>
+                <button>Wizard</button>
+            </div>
+            <div class="column">
+                <h3>Selected Monsters/Heroes</h3>
+                <ul id="monster-list"></ul>
+                <label>
+                    <input type="checkbox" id="show-rolls" onclick="toggleRolls()"> Show Rolls
+                </label>
+            </div>
         </div>
+    </div>
+</section>
 
-        <!-- Left box: Monsters/Heroes -->
-        <div class="monster-hero-buttons">
-            <h3>Monsters/Heroes</h3>
-            <button onclick="addToList(this)">Goblin</button>
-            <button onclick="addToList(this)">Orc</button>
-            <button onclick="addToList(this)">Troll</button>
-            <button onclick="addToList(this)">Knight</button>
-            <button onclick="addToList(this)">Wizard</button>
-        </div>
-
-        <!-- Right box: Selected Monsters/Heroes -->
-        <div class="selected-list">
-            <h3>Selected Monsters/Heroes</h3>
-            <ul id="monster-list"></ul>
-            <label>
-                <input type="checkbox" id="show-rolls" onclick="toggleRolls()"> Show Rolls
-            </label>
-        </div>
-    </section>
 
     <footer class="main-footer">
         <div class="custom-container">
