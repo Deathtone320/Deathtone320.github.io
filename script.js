@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // Ensure buttons for monsters/heroes function correctly
-    const monsterHeroButtons = document.querySelectorAll('.column button');
+    const monsterHeroButtons = document.querySelectorAll('.monster-hero-buttons button');
     if (monsterHeroButtons.length > 0) {
         monsterHeroButtons.forEach(button => {
             button.addEventListener('click', function() {
