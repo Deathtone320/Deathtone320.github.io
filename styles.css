@@ -124,13 +124,53 @@ footer {
 }
 
 
+.builder-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.9); /* Light background to make text visible */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 2;
+}
+
+/* Ensure the .builder section remains behind the content */
 .builder {
     background-image: url('images/encounter-builder-background.PNG');
-    background-size: cover; /* Ensures the image covers the section */
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 100vh; /* Set to full viewport height */
-    padding: 2rem 0;
+    min-height: 100vh; /* Ensures the section covers full screen */
+    padding: 4rem 0; /* Add more padding to create space around the content */
+    position: relative;
+    z-index: 1;
 }
+
+/* Optional: To add the paper effect to make text look written on paper */
+.pinned-paper {
+    background: rgba(255, 255, 255, 0.95); /* Paper effect with opacity */
+    padding: 2rem;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+}
+
+/* For pinning effect, if you want */
+.pinned-paper::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    background: #333;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
 
 
