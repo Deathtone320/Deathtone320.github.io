@@ -55,9 +55,15 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener("DOMContentLoaded", function() {
     // Ensure buttons for monsters/heroes function correctly
     const monsterHeroButtons = document.querySelectorAll('.monster-hero-buttons button');
+    
+    // Debugging: Log the buttons found to ensure they are detected
+    console.log("Monster/Hero buttons:", monsterHeroButtons);
+
     if (monsterHeroButtons.length > 0) {
         monsterHeroButtons.forEach(button => {
             button.addEventListener('click', function() {
+                // Debugging: Log the button click to check if the click event is fired
+                console.log("Button clicked:", this.textContent);
                 addToList(this.textContent);
             });
         });
@@ -74,6 +80,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Function to add a clicked monster/hero to the list
     function addToList(name) {
         const roll = rollDice();
+        console.log("Adding to list:", name, "with roll:", roll); // Debugging
 
         // Add the monster/hero along with their roll to the list
         selectedMonstersHeroes.push({ name: name, roll: roll });
@@ -95,6 +102,8 @@ document.addEventListener("DOMContentLoaded", function() {
             listItem.textContent = `${item.name}: ${item.roll}`;
             list.appendChild(listItem);
         });
+
+        console.log("Updated list:", selectedMonstersHeroes); // Debugging
     }
 
     // Function to show/hide rolls based on checkbox
@@ -115,3 +124,4 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
+
