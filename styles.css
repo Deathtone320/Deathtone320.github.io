@@ -7,7 +7,7 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    background-color: #f4f4f4;
+    background-color: brown;
     color: #333;
 }
 
@@ -126,14 +126,13 @@ footer {
 /* Adjust builder background */
 .builder {
     background-image: url('images/encounter-builder-background.PNG');
-    background-size: cover; /* Ensure the background covers the section */
-    background-attachment: fixed; /* Keeps the image in place when scrolling */
+    background-size: cover; /* Ensures the image covers the whole section */
     background-position: center;
     background-repeat: no-repeat;
-    min-height: 100vh; /* Ensures the section covers full screen */
-    position: fix;
-    z-index: 0; /* Stays behind all content */
-    padding: 4rem 0;
+    background-color: brown; /* Changes the background color to brown */
+    height: 100vh; /* Full height of the viewport */
+    width: 100vw; /* Full width of the viewport */
+    opacity: 0.7; /* Makes the background image transparent */
 }
 
 /* Header and footer */
