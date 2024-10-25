@@ -16,13 +16,13 @@ nav {
 
 nav a {
     color: #fff;
-    padding: 10px 20px; /* Adjusted for consistent alignment */
+    padding: 10px 20px;
     text-decoration: none;
-    vertical-align: middle; /* Ensures all buttons align properly */
+    vertical-align: middle;
 }
 
 #auth-section a {
-    padding: 10px 20px; /* Same padding for the login/profile button */
+    padding: 10px 20px;
     vertical-align: middle;
 }
 
