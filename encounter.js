@@ -17,7 +17,6 @@ const contextMenu = document.getElementById('context-menu');
 let selectedItem = null;
 let showingFront = true;
 
-
 // Images for Heroes and Monsters
 const images = {
     Berserker: {
@@ -144,20 +143,48 @@ const referenceCard = {
     back: 'https://raw.githubusercontent.com/Deathtone320/Deathtone320.github.io/refs/heads/main/images/Monster/Referance%20Card/MonstercardRulesBackTGCRotated.png'
 };
 
-// Add hero or monster to the encounter list
-document.querySelectorAll('.btn').forEach(button => {
-    button.addEventListener('click', function () {
-        const name = this.innerText;
-        const type = this.getAttribute('data-type');
-        const roll = rollD20();
-        const li = document.createElement('li');
-        li.textContent = `${name} (Roll: ${roll})`;
-        li.setAttribute('data-roll', roll);
-        li.setAttribute('data-type', type);
-        encounterList.appendChild(li);
 
-        // Sort the list after adding
-        sortEncounterList();
+// Add event listeners only after DOM is fully loaded
+document.addEventListener('DOMContentLoaded', function () {
+    // Close popup for monsters
+    const popupCloseBtn = document.getElementById('popup-close');
+    if (popupCloseBtn) {
+        popupCloseBtn.addEventListener('click', function () {
+            popup.style.display = 'none';
+        });
+    }
+
+    // Close popup for heroes
+    const popupHeroCloseBtn = document.getElementById('popup-hero-close');
+    if (popupHeroCloseBtn) {
+        popupHeroCloseBtn.addEventListener('click', function () {
+            popupHero.style.display = 'none';
+        });
+    }
+
+    // Reset button functionality
+    const resetBtn = document.getElementById('reset-btn');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', function () {
+            encounterList.innerHTML = '';
+        });
+    }
+
+    // Add hero or monster to the encounter list
+    document.querySelectorAll('.btn').forEach(button => {
+        button.addEventListener('click', function () {
+            const name = this.innerText;
+            const type = this.getAttribute('data-type');
+            const roll = rollD20();
+            const li = document.createElement('li');
+            li.textContent = `${name} (Roll: ${roll})`;
+            li.setAttribute('data-roll', roll);
+            li.setAttribute('data-type', type);
+            encounterList.appendChild(li);
+
+            // Sort the list after adding
+            sortEncounterList();
+        });
     });
 });
 
@@ -167,14 +194,16 @@ function updateLoginState() {
 
     if (user && user.email) {
         const authSection = document.getElementById('auth-section');
-        authSection.innerHTML = `<a href="profile.html" id="profile-btn">Logged in as ${user.email}</a>`;
+        if (authSection) {
+            authSection.innerHTML = `<a href="profile.html" id="profile-btn">Logged in as ${user.email}</a>`;
+        }
     }
 }
 
+// Example function for login (you would replace this with your actual login logic)
 function loginUser(email) {
     localStorage.setItem('user', JSON.stringify({ email }));
     updateLoginState();
-    window.location.href = 'index.html'; // Redirect to the homepage after login
 }
 
 // Sort encounter list by roll value (descending)
@@ -251,21 +280,6 @@ function viewReferenceCard() {
         showingFront = !showingFront;
     });
 }
-
-// Close popup for monsters
-document.getElementById('popup-close').addEventListener('click', function () {
-    popup.style.display = 'none';
-});
-
-// Close popup for heroes
-document.getElementById('popup-hero-close').addEventListener('click', function () {
-    popupHero.style.display = 'none';
-});
-
-// Reset button functionality
-document.getElementById('reset-btn').addEventListener('click', function () {
-    encounterList.innerHTML = '';
-});
 
 // Utility function to roll a 1d20
 function rollD20() {
