@@ -17,6 +17,8 @@ const contextMenu = document.getElementById('context-menu');
 let selectedItem = null;
 let showingFront = true;
 
+
+
 // Images for Heroes and Monsters
 const images = {
     Berserker: {
@@ -144,8 +146,13 @@ const referenceCard = {
 };
 
 
-// Add event listeners only after DOM is fully loaded
+// Check if all required elements are present before adding event listeners
 document.addEventListener('DOMContentLoaded', function () {
+    if (!encounterList || !popup || !popupHero || !contextMenu) {
+        console.error('Some required DOM elements are missing. Aborting.');
+        return;
+    }
+
     // Close popup for monsters
     const popupCloseBtn = document.getElementById('popup-close');
     if (popupCloseBtn) {
@@ -186,63 +193,38 @@ document.addEventListener('DOMContentLoaded', function () {
             sortEncounterList();
         });
     });
-});
 
-// Function to update login state
-function updateLoginState() {
-    const user = JSON.parse(localStorage.getItem('user')); // Assuming user data is stored in localStorage
+    // Right-click (context menu) functionality
+    encounterList.addEventListener('contextmenu', function (e) {
+        e.preventDefault();
+        const target = e.target;
 
-    if (user && user.email) {
-        const authSection = document.getElementById('auth-section');
-        if (authSection) {
-            authSection.innerHTML = `<a href="profile.html" id="profile-btn">Logged in as ${user.email}</a>`;
+        if (target.tagName === 'LI') {
+            selectedItem = target;
+            contextMenu.style.display = 'block';
+            contextMenu.style.left = `${e.pageX}px`;
+            contextMenu.style.top = `${e.pageY}px`;
         }
-    }
-}
+    });
 
-// Example function for login (you would replace this with your actual login logic)
-function loginUser(email) {
-    localStorage.setItem('user', JSON.stringify({ email }));
-    updateLoginState();
-}
+    // Handle context menu options
+    contextMenu.addEventListener('click', function (e) {
+        const action = e.target.id;
 
-// Sort encounter list by roll value (descending)
-function sortEncounterList() {
-    const items = Array.from(encounterList.children);
-    items.sort((a, b) => b.getAttribute('data-roll') - a.getAttribute('data-roll'));
-    items.forEach(item => encounterList.appendChild(item));
-}
-
-// Right-click (context menu) functionality
-encounterList.addEventListener('contextmenu', function (e) {
-    e.preventDefault();
-    const target = e.target;
-
-    if (target.tagName === 'LI') {
-        selectedItem = target;
-        contextMenu.style.display = 'block';
-        contextMenu.style.left = `${e.pageX}px`;
-        contextMenu.style.top = `${e.pageY}px`;
-    }
-});
-
-// Handle context menu options
-contextMenu.addEventListener('click', function (e) {
-    const action = e.target.id;
-
-    if (action === 'view') {
-        viewDetails(selectedItem);
-    } else if (action === 'reference-card') {
-        viewReferenceCard();
-    } else if (action === 'mark-dead') {
-        selectedItem.classList.add('dead');
-    } else if (action === 'mark-alive') {
-        selectedItem.classList.remove('dead');
-    } else if (action === 'remove') {
-        selectedItem.classList.add('fade-out');
-        setTimeout(() => selectedItem.remove(), 500);
-    }
-    contextMenu.style.display = 'none';
+        if (action === 'view') {
+            viewDetails(selectedItem);
+        } else if (action === 'reference-card') {
+            viewReferenceCard();
+        } else if (action === 'mark-dead') {
+            selectedItem.classList.add('dead');
+        } else if (action === 'mark-alive') {
+            selectedItem.classList.remove('dead');
+        } else if (action === 'remove') {
+            selectedItem.classList.add('fade-out');
+            setTimeout(() => selectedItem.remove(), 500);
+        }
+        contextMenu.style.display = 'none';
+    });
 });
 
 // View details popup with front/back image toggle
@@ -284,4 +266,23 @@ function viewReferenceCard() {
 // Utility function to roll a 1d20
 function rollD20() {
     return Math.floor(Math.random() * 20) + 1;
+}
+
+// Function to update login state
+function updateLoginState() {
+    const user = JSON.parse(localStorage.getItem('user')); // Assuming user data is stored in localStorage
+
+    if (user && user.email) {
+        const authSection = document.getElementById('auth-section');
+        if (authSection) {
+            authSection.innerHTML = `<a href="profile.html" id="profile-btn">Logged in as ${user.email}</a>`;
+        }
+    }
+}
+
+// Sort encounter list by roll value (descending)
+function sortEncounterList() {
+    const items = Array.from(encounterList.children);
+    items.sort((a, b) => b.getAttribute('data-roll') - a.getAttribute('data-roll'));
+    items.forEach(item => encounterList.appendChild(item));
 }
