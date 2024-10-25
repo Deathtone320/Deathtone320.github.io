@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Encounter Builder - DeathForge Games</title>
     <script>
-        // Images for Heroes and Monsters (use this object for all image-related actions)
+        // Images for Heroes and Monsters
         const images = {
             Berserker: {
                 front: 'path-to-berserker-front-image',
@@ -105,6 +105,12 @@
                 back: 'path-to-fimir-back-image'
             }
         };
+
+        // Global reference card images
+        const referenceCard = {
+            front: 'path-to-reference-card-front-image',
+            back: 'path-to-reference-card-back-image'
+        };
     </script>
     <style>
         * {
@@ -155,9 +161,8 @@
             background-color: rgba(255, 255, 255, 0.3);
             border: 2px solid #333;
             width: 250px;
-            height: 400px;
+            min-height: 400px;
             padding: 10px;
-            overflow-y: auto;
             position: relative;
         }
 
@@ -187,7 +192,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 5px;
-            background-color: #333; /* Dark background similar to buttons */
+            background-color: #333;
             color: #fff;
             margin-bottom: 5px;
             position: relative;
@@ -205,10 +210,10 @@
 
         .popup {
             position: absolute;
-            background-color: #fff;
+            background-color: #000;
             border: 1px solid #333;
-            width: 600px; /* Twice as big as before */
-            height: 800px; /* Twice as big as before */
+            width: 600px;
+            height: 1000px;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -224,6 +229,7 @@
         .popup-content img {
             max-width: 100%;
             max-height: 100%;
+            object-fit: contain;
             cursor: pointer;
         }
 
@@ -239,11 +245,11 @@
 
         .context-menu {
             position: absolute;
-            background-color: #333; /* Solid background */
-            border: 1px solid #fff; /* White border for contrast */
+            background-color: #333;
+            border: 1px solid #fff;
             display: none;
             z-index: 1000;
-            color: #fff; /* White text for better contrast */
+            color: #fff;
         }
 
         .context-menu ul {
@@ -255,12 +261,11 @@
         .context-menu ul li {
             padding: 10px;
             cursor: pointer;
-            border-bottom: 1px solid #555; /* Slightly darker separator */
-            color: #fff; /* White text */
+            border-bottom: 1px solid #555;
         }
 
         .context-menu ul li:hover {
-            background-color: #555; /* Darker hover effect for better visibility */
+            background-color: #555;
         }
 
         #reset-btn {
@@ -276,7 +281,6 @@
         @media (max-width: 768px) {
             .square {
                 width: 100%;
-                height: 300px;
             }
 
             .popup {
@@ -355,6 +359,7 @@
     <div class="context-menu" id="context-menu">
         <ul>
             <li id="view">View</li>
+            <li id="reference-card">Reference Card</li>
             <li id="mark-dead">Mark as Dead</li>
             <li id="mark-alive">Mark as Alive</li>
             <li id="remove">Remove</li>
@@ -417,12 +422,13 @@
 
             if (action === 'view') {
                 viewDetails(selectedItem);
+            } else if (action === 'reference-card') {
+                viewReferenceCard();
             } else if (action === 'mark-dead') {
                 selectedItem.classList.add('dead');
             } else if (action === 'mark-alive') {
                 selectedItem.classList.remove('dead');
             } else if (action === 'remove') {
-                // Fade-out before removing
                 selectedItem.classList.add('fade-out');
                 setTimeout(() => selectedItem.remove(), 500);
             }
@@ -436,19 +442,34 @@
 
         // View details popup with front/back image toggle
         function viewDetails(item) {
-            const name = item.textContent.split(' ')[0]; // Get the name
-            const details = images[name] || { front: '[Front Image]', back: '[Back Image]' }; // Get image from global object
+            const name = item.textContent.split(' ')[0];
+            const details = images[name] || { front: '[Front Image]', back: '[Back Image]' };
             showingFront = true;
 
             popupContent.innerHTML = `<h3>${name} Details</h3><img src="${details.front}" alt="${name} Front">`;
             popup.style.display = 'block';
 
-            // Toggle front/back on image click
             popupContent.querySelector('img').addEventListener('click', function () {
                 if (showingFront) {
                     this.src = details.back;
                 } else {
                     this.src = details.front;
+                }
+                showingFront = !showingFront;
+            });
+        }
+
+        // View reference card
+        function viewReferenceCard() {
+            showingFront = true;
+            popupContent.innerHTML = `<h3>Reference Card</h3><img src="${referenceCard.front}" alt="Reference Front">`;
+            popup.style.display = 'block';
+
+            popupContent.querySelector('img').addEventListener('click', function () {
+                if (showingFront) {
+                    this.src = referenceCard.back;
+                } else {
+                    this.src = referenceCard.front;
                 }
                 showingFront = !showingFront;
             });
@@ -461,7 +482,7 @@
 
         // Reset button functionality
         document.getElementById('reset-btn').addEventListener('click', function () {
-            encounterList.innerHTML = ''; // Clear the encounter list
+            encounterList.innerHTML = '';
         });
     </script>
 </body>
