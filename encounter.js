@@ -171,10 +171,10 @@ function updateLoginState() {
     }
 }
 
-// Example function for login (you would replace this with your actual login logic)
 function loginUser(email) {
     localStorage.setItem('user', JSON.stringify({ email }));
     updateLoginState();
+    window.location.href = 'index.html'; // Redirect to the homepage after login
 }
 
 // Sort encounter list by roll value (descending)
