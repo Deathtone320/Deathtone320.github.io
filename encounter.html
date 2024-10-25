@@ -60,6 +60,28 @@
         </div>
     </div>
 
+    <!-- Popups for monster and hero details -->
+    <div id="popup" class="popup">
+        <div id="popup-content"></div>
+        <button id="popup-close">Close</button>
+    </div>
+
+    <div id="popup-hero" class="popup-hero">
+        <div id="popup-hero-content"></div>
+        <button id="popup-hero-close">Close</button>
+    </div>
+
+    <!-- Context Menu for right-click actions -->
+    <div id="context-menu" class="context-menu" style="display:none;">
+        <ul>
+            <li id="view">View</li>
+            <li id="reference-card">Reference Card</li>
+            <li id="mark-dead">Mark as Dead</li>
+            <li id="mark-alive">Mark as Alive</li>
+            <li id="remove">Remove</li>
+        </ul>
+    </div>
+
     <!-- Include the encounter.js and header.js for functionality -->
     <script src="encounter.js"></script>
     <script src="header.js"></script> <!-- Ensure header logic is loaded -->
