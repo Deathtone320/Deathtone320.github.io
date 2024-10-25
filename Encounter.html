@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encounter Builder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .square {
+            background-color: rgba(255, 255, 255, 0.5);
+            border: 2px solid #333;
+            width: 200px;
+            height: 400px;
+            padding: 10px;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .square h3 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 5px;
+            cursor: pointer;
+            border: none;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+        }
+
+        .encounter-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .encounter-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px;
+            background-color: #eee;
+            margin-bottom: 5px;
+            position: relative;
+        }
+
+        .encounter-list li.dead {
+            filter: blur(2px);
+            color: gray;
+        }
+
+        .popup {
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #333;
+            width: 300px;
+            height: 400px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            display: none;
+        }
+
+        .popup-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            background-color: red;
+            color: #fff;
+            padding: 5px;
+        }
+
+        .context-menu {
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #333;
+            display: none;
+            z-index: 1000;
+        }
+
+        .context-menu ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .context-menu ul li {
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .context-menu ul li:hover {
+            background-color: #eee;
+        }
+
+        #reset-btn {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Heroes Square -->
+        <div class="square" id="heroes-square">
+            <h3>Heroes</h3>
+            <button class="btn" data-type="hero">Berserker</button>
+            <button class="btn" data-type="hero">Druid</button>
+            <button class="btn" data-type="hero">Researcher</button>
+            <button class="btn" data-type="hero">Thief</button>
+            <!-- Add other heroes -->
+        </div>
+
+        <!-- Monsters Square -->
+        <div class="square" id="monsters-square">
+            <h3>Monsters</h3>
+            <button class="btn" data-type="monster">Goblin</button>
+            <button class="btn" data-type="monster">Orc</button>
+            <button class="btn" data-type="monster">Fimir</button>
+            <!-- Add other monsters -->
+        </div>
+
+        <!-- Encounter Square -->
+        <div class="square" id="encounter-square">
+            <h3>Encounter List</h3>
+            <ul class="encounter-list" id="encounter-list"></ul>
+            <button id="reset-btn">Reset</button>
+        </div>
+    </div>
+
+    <!-- Popup for viewing details -->
+    <div class="popup" id="popup">
+        <span class="popup-close" id="popup-close">X</span>
+        <div class="popup-content" id="popup-content">
+            <!-- Content goes here -->
+        </div>
+    </div>
+
+    <!-- Context Menu -->
+    <div class="context-menu" id="context-menu">
+        <ul>
+            <li id="view">View</li>
+            <li id="mark-dead">Mark as Dead</li>
+            <li id="remove">Remove</li>
+        </ul>
+    </div>
+
+    <script>
+        const encounterList = document.getElementById('encounter-list');
+        const popup = document.getElementById('popup');
+        const popupContent = document.getElementById('popup-content');
+        const contextMenu = document.getElementById('context-menu');
+        let selectedItem = null;
+
+        // Roll a 1d20
+        function rollD20() {
+            return Math.floor(Math.random() * 20) + 1;
+        }
+
+        // Add hero or monster to the encounter list
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function () {
+                const name = this.innerText;
+                const type = this.getAttribute('data-type');
+                const roll = rollD20();
+                const li = document.createElement('li');
+                li.textContent = `${name} (Roll: ${roll})`;
+                li.setAttribute('data-roll', roll);
+                li.setAttribute('data-type', type);
+                encounterList.appendChild(li);
+
+                // Sort the list after adding
+                sortEncounterList();
+            });
+        });
+
+        // Sort encounter list by roll value (descending)
+        function sortEncounterList() {
+            const items = Array.from(encounterList.children);
+            items.sort((a, b) => b.getAttribute('data-roll') - a.getAttribute('data-roll'));
+            items.forEach(item => encounterList.appendChild(item));
+        }
+
+        // Right-click (context menu) functionality
+        encounterList.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+            const target = e.target;
+
+            if (target.tagName === 'LI') {
+                selectedItem = target;
+                contextMenu.style.display = 'block';
+                contextMenu.style.left = `${e.pageX}px`;
+                contextMenu.style.top = `${e.pageY}px`;
+            }
+        });
+
+        // Handle context menu options
+        contextMenu.addEventListener('click', function (e) {
+            const action = e.target.id;
+
+            if (action === 'view') {
+                viewDetails(selectedItem);
+            } else if (action === 'mark-dead') {
+                selectedItem.classList.add('dead');
+            } else if (action === 'remove') {
+                selectedItem.remove();
+            }
+            contextMenu.style.display = 'none';
+        });
+
+        // Hide context menu when clicking elsewhere
+        document.addEventListener('click', function () {
+            contextMenu.style.display = 'none';
+        });
+
+        // View details popup
+        function viewDetails(item) {
+            const name = item.textContent.split(' ')[0]; // Get the name
+            popupContent.innerHTML = `<h3>${name} Details</h3><p>Front: [Image]</p><p>Back: [Image]</p>`;
+            popup.style.display = 'block';
+        }
+
+        // Close popup
+        document.getElementById('popup-close').addEventListener('click', function () {
+            popup.style.display = 'none';
+        });
+
+        // Reset button functionality
+        document.getElementById('reset-btn').addEventListener('click', function () {
+            encounterList.innerHTML = ''; // Clear the encounter list
+        });
+    </script>
+</body>
+
+</html>
