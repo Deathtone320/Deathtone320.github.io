@@ -5,109 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login & Sign Up - DeathForge Games</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: black;
-            color: #fff;
-        }
-
-        header {
-            background: #333;
-            color: #fff;
-            padding: 10px 0;
-            text-align: center;
-        }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #444;
-            padding: 10px;
-        }
-
-        nav a {
-            color: #fff;
-            padding: 10px;
-            text-decoration: none;
-        }
-
-        nav a:hover {
-            background-color: #555;
-        }
-
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: calc(100vh - 100px);
-        }
-
-        .form-container {
-            background-color: rgba(255, 255, 255, 0.3);
-            border: 2px solid #333;
-            padding: 20px;
-            width: 300px;
-            text-align: center;
-            border-radius: 8px;
-        }
-
-        .form-container h2 {
-            margin-bottom: 20px;
-        }
-
-        .form-container input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #333;
-            border-radius: 4px;
-        }
-
-        .form-container button {
-            width: 100%;
-            padding: 10px;
-            background-color: #333;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-
-        .form-container button:hover {
-            background-color: #555;
-        }
-
-        .google-signin-btn {
-            background-color: #4285F4;
-            color: white;
-            margin-top: 10px;
-        }
-
-        .google-signin-btn:hover {
-            background-color: #357ae8;
-        }
-    </style>
+    <link rel="stylesheet" href="loginform.css"> <!-- Link to the CSS file for this page -->
 </head>
 
 <body>
-    <header>
-        <h1>DeathForge Games - Login</h1>
-    </header>
-
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="contact.html">Contact</a>
-        <a href="encounter.html">Encounter Builder</a>
-        <a href="loginform.html">Login</a>
-    </nav>
-
+    <div id="header-container"></div> <!-- This will load the external header -->
+    
     <div class="container">
         <div class="form-container">
             <h2>Sign Up</h2>
@@ -122,65 +25,9 @@
         </div>
     </div>
 
-    <!-- Include Firebase SDKs -->
-    <script type="module">
-      // Import the necessary functions from the Firebase SDK
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-      import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-
-      // Your Firebase configuration
-      const firebaseConfig = {
-        apiKey: "AIzaSyDioEFelEannZdfrp_MgZAFRuqhs6m3bJc",
-        authDomain: "deathforge-games-website.firebaseapp.com",
-        projectId: "deathforge-games-website",
-        storageBucket: "deathforge-games-website.appspot.com",
-        messagingSenderId: "323425449417",
-        appId: "1:323425449417:web:e121c53dd39a984bc0a418",
-        measurementId: "G-8PH2XL7SJ8"
-      };
-
-      // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-      const auth = getAuth(app);
-
-      // Handle email/password sign-up
-      document.getElementById('signup-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const email = document.getElementById('signup-email').value;
-        const password = document.getElementById('signup-password').value;
-
-        createUserWithEmailAndPassword(auth, email, password)
-          .then((userCredential) => {
-            const user = userCredential.user;
-            console.log('User signed up:', user);
-            alert('User signed up successfully!');
-          })
-          .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.error('Error signing up:', errorCode, errorMessage);
-            alert(errorMessage);
-          });
-      });
-
-      // Google Sign-In setup
-      const provider = new GoogleAuthProvider();
-
-      document.getElementById('google-signin-btn').addEventListener('click', () => {
-        signInWithPopup(auth, provider)
-          .then((result) => {
-            const user = result.user;
-            console.log('Google sign-in successful:', user);
-            alert('Google sign-in successful!');
-          })
-          .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.error('Google sign-in error:', errorCode, errorMessage);
-            alert(errorMessage);
-          });
-      });
-    </script>
+    <!-- Include Firebase SDKs and login logic -->
+    <script src="loginform.js"></script> <!-- Link to the JS file for this page -->
+    <script src="header.js"></script> <!-- Ensure the header logic is loaded -->
 </body>
 
 </html>
