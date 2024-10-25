@@ -5,14 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Encounter Builder - DeathForge Games</title>
-    <link rel="stylesheet" href="encounter.css">
+    <link rel="stylesheet" href="encounter.css"> <!-- Link to the specific encounter CSS -->
+    <link rel="stylesheet" href="header.css"> <!-- Link to the shared header CSS -->
 </head>
 
 <body>
-    <div id="header-container"></div>
+    <div id="header-container"></div> <!-- This will load the external header -->
 
     <div class="container">
-        <!-- Heroes Square -->
+        <!-- Heroes Section -->
         <div class="square" id="heroes-square">
             <h3>Heroes</h3>
             <button class="btn" data-type="hero">Berserker</button>
@@ -32,7 +33,7 @@
             <button class="btn" data-type="hero">Stonewall</button>
         </div>
 
-        <!-- Monsters Square -->
+        <!-- Monsters Section -->
         <div class="square" id="monsters-square">
             <h3>Monsters</h3>
             <button class="btn" data-type="monster">Goblin</button>
@@ -51,7 +52,7 @@
             <button class="btn" data-type="monster">MechanicalGolem</button>
         </div>
 
-        <!-- Encounter Square -->
+        <!-- Encounter List Section -->
         <div class="square" id="encounter-square">
             <h3>Encounter List</h3>
             <ul class="encounter-list" id="encounter-list"></ul>
@@ -59,35 +60,9 @@
         </div>
     </div>
 
-    <!-- Popup for viewing details -->
-    <div class="popup" id="popup">
-        <span class="popup-close" id="popup-close">X</span>
-        <div class="popup-content" id="popup-content">
-            <!-- Content goes here -->
-        </div>
-    </div>
-
-    <!-- Popup for heroes (wider, horizontal) -->
-    <div class="popup-hero" id="popup-hero">
-        <span class="popup-close" id="popup-hero-close">X</span>
-        <div class="popup-content" id="popup-hero-content">
-            <!-- Content goes here -->
-        </div>
-    </div>
-
-    <!-- Context Menu -->
-    <div class="context-menu" id="context-menu">
-        <ul>
-            <li id="view">View</li>
-            <li id="reference-card">Reference Card</li>
-            <li id="mark-dead">Mark as Dead</li>
-            <li id="mark-alive">Mark as Alive</li>
-            <li id="remove">Remove</li>
-        </ul>
-    </div>
-
+    <!-- Include the encounter.js and header.js for functionality -->
     <script src="encounter.js"></script>
-    <script type="module" src="https://github.com/Deathtone320/Deathtone320.github.io/blob/main/firebase-config.js"></script>
+    <script src="header.js"></script> <!-- Ensure header logic is loaded -->
 </body>
 
 </html>
