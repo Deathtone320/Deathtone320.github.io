@@ -8,15 +8,15 @@ fetch('header.html')
     .catch(error => console.error('Error loading header:', error));
 
 // JavaScript for Encounter Builder functionality
-const encounterList = document.getElementById('encounter-list');
-const popup = document.getElementById('popup');
-const popupHero = document.getElementById('popup-hero');
-const popupContent = document.getElementById('popup-content');
-const popupHeroContent = document.getElementById('popup-hero-content');
-const contextMenu = document.getElementById('context-menu');
-let selectedItem = null;
-let showingFront = true;
-
+document.addEventListener('DOMContentLoaded', function () {
+    const encounterList = document.getElementById('encounter-list');
+    const popup = document.getElementById('popup');
+    const popupHero = document.getElementById('popup-hero');
+    const popupContent = document.getElementById('popup-content');
+    const popupHeroContent = document.getElementById('popup-hero-content');
+    const contextMenu = document.getElementById('context-menu');
+    let selectedItem = null;
+    let showingFront = true;
 
 // Images for Heroes and Monsters
 const images = {
@@ -144,9 +144,7 @@ const referenceCard = {
     back: 'https://raw.githubusercontent.com/Deathtone320/Deathtone320.github.io/refs/heads/main/images/Monster/Referance%20Card/MonstercardRulesBackTGCRotated.png'
 };
 
-
 // Check if all required elements are present before adding event listeners
-document.addEventListener('DOMContentLoaded', function () {
     if (!encounterList || !popup || !popupHero || !contextMenu) {
         console.error('Some required DOM elements are missing. Aborting.');
         return;
@@ -206,6 +204,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    // Handle clicks outside of context menu to hide it
+    document.addEventListener('click', function (e) {
+        if (!contextMenu.contains(e.target)) {
+            contextMenu.style.display = 'none';
+        }
+    });
+
     // Handle context menu options
     contextMenu.addEventListener('click', function (e) {
         const action = e.target.id;
@@ -224,64 +229,67 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         contextMenu.style.display = 'none';
     });
-});
 
-// View details popup with front/back image toggle
-function viewDetails(item) {
-    const name = item.textContent.split(' ')[0];
-    const details = images[name] || { front: '[Front Image]', back: '[Back Image]' };
-    showingFront = true;
+    // View details popup with front/back image toggle
+    function viewDetails(item) {
+        const name = item.textContent.split(' ')[0];
+        const details = images[name] || { front: '[Front Image]', back: '[Back Image]' };
+        showingFront = true;
 
-    // Check if it's a hero or monster
-    if (item.getAttribute('data-type') === 'hero') {
-        popupHeroContent.innerHTML = `<h3>${name} Details</h3><img src="${details.front}" alt="${name} Front">`;
-        popupHero.style.display = 'block';
-        popupHeroContent.querySelector('img').addEventListener('click', function () {
-            this.src = showingFront ? details.back : details.front;
-            showingFront = !showingFront;
-        });
-    } else {
-        popupContent.innerHTML = `<h3>${name} Details</h3><img src="${details.front}" alt="${name} Front">`;
-        popup.style.display = 'block';
-        popupContent.querySelector('img').addEventListener('click', function () {
-            this.src = showingFront ? details.back : details.front;
-            showingFront = !showingFront;
-        });
-    }
-}
-
-// View reference card
-function viewReferenceCard() {
-    showingFront = true;
-    popupHeroContent.innerHTML = `<h3>Reference Card</h3><img src="${referenceCard.front}" alt="Reference Front">`;
-    popupHero.style.display = 'block';
-
-    popupHeroContent.querySelector('img').addEventListener('click', function () {
-        this.src = showingFront ? referenceCard.back : referenceCard.front;
-        showingFront = !showingFront;
-    });
-}
-
-// Utility function to roll a 1d20
-function rollD20() {
-    return Math.floor(Math.random() * 20) + 1;
-}
-
-// Function to update login state
-function updateLoginState() {
-    const user = JSON.parse(localStorage.getItem('user')); // Assuming user data is stored in localStorage
-
-    if (user && user.email) {
-        const authSection = document.getElementById('auth-section');
-        if (authSection) {
-            authSection.innerHTML = `<a href="profile.html" id="profile-btn">Logged in as ${user.email}</a>`;
+        // Check if it's a hero or monster
+        if (item.getAttribute('data-type') === 'hero') {
+            popupHeroContent.innerHTML = `<h3>${name} Details</h3><img src="${details.front}" alt="${name} Front">`;
+            popupHero.style.display = 'block';
+            popupHeroContent.querySelector('img').addEventListener('click', function () {
+                this.src = showingFront ? details.back : details.front;
+                showingFront = !showingFront;
+            });
+        } else {
+            popupContent.innerHTML = `<h3>${name} Details</h3><img src="${details.front}" alt="${name} Front">`;
+            popup.style.display = 'block';
+            popupContent.querySelector('img').addEventListener('click', function () {
+                this.src = showingFront ? details.back : details.front;
+                showingFront = !showingFront;
+            });
         }
     }
-}
 
-// Sort encounter list by roll value (descending)
-function sortEncounterList() {
-    const items = Array.from(encounterList.children);
-    items.sort((a, b) => b.getAttribute('data-roll') - a.getAttribute('data-roll'));
-    items.forEach(item => encounterList.appendChild(item));
-}
+    // View reference card
+    function viewReferenceCard() {
+        showingFront = true;
+        popupHeroContent.innerHTML = `<h3>Reference Card</h3><img src="${referenceCard.front}" alt="Reference Front">`;
+        popupHero.style.display = 'block';
+
+        popupHeroContent.querySelector('img').addEventListener('click', function () {
+            this.src = showingFront ? referenceCard.back : referenceCard.front;
+            showingFront = !showingFront;
+        });
+    }
+
+    // Utility function to roll a 1d20
+    function rollD20() {
+        return Math.floor(Math.random() * 20) + 1;
+    }
+
+    // Function to update login state
+    function updateLoginState() {
+        try {
+            const user = JSON.parse(localStorage.getItem('user')); // Assuming user data is stored in localStorage
+            if (user && user.email) {
+                const authSection = document.getElementById('auth-section');
+                if (authSection) {
+                    authSection.innerHTML = `<a href="profile.html" id="profile-btn">Logged in as ${user.email}</a>`;
+                }
+            }
+        } catch (error) {
+            console.error('Error parsing user from localStorage', error);
+        }
+    }
+
+    // Sort encounter list by roll value (descending)
+    function sortEncounterList() {
+        const items = Array.from(encounterList.children);
+        items.sort((a, b) => b.getAttribute('data-roll') - a.getAttribute('data-roll'));
+        items.forEach(item => encounterList.appendChild(item));
+    }
+});
