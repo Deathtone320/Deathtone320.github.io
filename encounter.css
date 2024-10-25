@@ -1,0 +1,172 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: #fff;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.square {
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 2px solid #333;
+    width: 250px;
+    min-height: 400px;
+    padding: 10px;
+    position: relative;
+}
+
+.square h3 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+}
+
+.encounter-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.encounter-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    background-color: #333;
+    color: #fff;
+    margin-bottom: 5px;
+    position: relative;
+    transition: opacity 0.5s;
+}
+
+.encounter-list li.dead {
+    filter: blur(2px);
+    color: gray;
+}
+
+.encounter-list li.fade-out {
+    opacity: 0;
+}
+
+.popup {
+    position: absolute;
+    background-color: #000;
+    border: 1px solid #333;
+    width: 600px;
+    height: 1000px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    display: none;
+}
+
+.popup-hero {
+    position: absolute;
+    background-color: #000;
+    border: 1px solid #333;
+    width: 1000px; /* Wider for horizontal hero cards */
+    height: 650px; /* Shorter height */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    display: none;
+}
+
+.popup-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.popup-content img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    background-color: red;
+    color: #fff;
+    padding: 5px;
+}
+
+.context-menu {
+    position: absolute;
+    background-color: #333;
+    border: 1px solid #fff;
+    display: none;
+    z-index: 1000;
+    color: #fff;
+}
+
+.context-menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.context-menu ul li {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #555;
+}
+
+.context-menu ul li:hover {
+    background-color: #555;
+}
+
+#reset-btn {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .square {
+        width: 100%;
+    }
+
+    .popup, .popup-hero {
+        width: 90%;
+        height: 90%;
+    }
+}
+
+/* Prevent text selection */
+body {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
