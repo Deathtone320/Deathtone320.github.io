@@ -4,27 +4,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Encounter Builder</title>
+    <title>Encounter Builder - DeathForge Games</title>
+    <script>
+        // Images for Heroes and Monsters (use this object for all image-related actions)
+        const images = {
+            Berserker: {
+                front: 'path-to-berserker-front-image',
+                back: 'path-to-berserker-back-image'
+            },
+            Druid: {
+                front: 'path-to-druid-front-image',
+                back: 'path-to-druid-back-image'
+            },
+            Researcher: {
+                front: 'path-to-researcher-front-image',
+                back: 'path-to-researcher-back-image'
+            },
+            Thief: {
+                front: 'path-to-thief-front-image',
+                back: 'path-to-thief-back-image'
+            },
+            Goblin: {
+                front: 'https://github.com/Deathtone320/Deathtone320.github.io/blob/main/images/Monster/Goblin/Monster%20Card%20Goblin%20Front%20V2.png?raw=true',
+                back: 'https://raw.githubusercontent.com/Deathtone320/Deathtone320.github.io/refs/heads/main/images/Monster/Goblin/Monster%20Card%20Goblin%20Back.png'
+            },
+            Orc: {
+                front: 'path-to-orc-front-image',
+                back: 'path-to-orc-back-image'
+            },
+            Fimir: {
+                front: 'path-to-fimir-front-image',
+                back: 'path-to-fimir-back-image'
+            }
+        };
+    </script>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: black;
+            color: #fff;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav {
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
+            background-color: #444;
+            padding: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            padding: 10px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #555;
         }
 
         .container {
             display: flex;
             gap: 20px;
+            justify-content: center;
+            padding: 20px;
+            flex-wrap: wrap;
         }
 
         .square {
-            background-color: rgba(255, 255, 255, 0.5);
+            background-color: rgba(255, 255, 255, 0.3);
             border: 2px solid #333;
-            width: 200px;
+            width: 250px;
             height: 400px;
             padding: 10px;
             overflow-y: auto;
@@ -60,11 +122,16 @@
             background-color: #eee;
             margin-bottom: 5px;
             position: relative;
+            transition: opacity 0.5s;
         }
 
         .encounter-list li.dead {
             filter: blur(2px);
             color: gray;
+        }
+
+        .encounter-list li.fade-out {
+            opacity: 0;
         }
 
         .popup {
@@ -128,10 +195,29 @@
             cursor: pointer;
             width: 100%;
         }
+
+        @media (max-width: 768px) {
+            .square {
+                width: 100%;
+                height: 300px;
+            }
+        }
     </style>
 </head>
 
 <body>
+    <header>
+        <h1>DeathForge Games - Encounter Builder</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="games.html">Games</a>
+        <a href="contact.html">Contact</a>
+        <a href="encounter.html">Encounter Builder</a>
+    </nav>
+
     <div class="container">
         <!-- Heroes Square -->
         <div class="square" id="heroes-square">
@@ -140,7 +226,6 @@
             <button class="btn" data-type="hero">Druid</button>
             <button class="btn" data-type="hero">Researcher</button>
             <button class="btn" data-type="hero">Thief</button>
-            <!-- Add other heroes -->
         </div>
 
         <!-- Monsters Square -->
@@ -149,7 +234,6 @@
             <button class="btn" data-type="monster">Goblin</button>
             <button class="btn" data-type="monster">Orc</button>
             <button class="btn" data-type="monster">Fimir</button>
-            <!-- Add other monsters -->
         </div>
 
         <!-- Encounter Square -->
@@ -173,6 +257,7 @@
         <ul>
             <li id="view">View</li>
             <li id="mark-dead">Mark as Dead</li>
+            <li id="mark-alive">Mark as Alive</li>
             <li id="remove">Remove</li>
         </ul>
     </div>
@@ -234,8 +319,12 @@
                 viewDetails(selectedItem);
             } else if (action === 'mark-dead') {
                 selectedItem.classList.add('dead');
+            } else if (action === 'mark-alive') {
+                selectedItem.classList.remove('dead');
             } else if (action === 'remove') {
-                selectedItem.remove();
+                // Fade-out before removing
+                selectedItem.classList.add('fade-out');
+                setTimeout(() => selectedItem.remove(), 500);
             }
             contextMenu.style.display = 'none';
         });
@@ -248,7 +337,8 @@
         // View details popup
         function viewDetails(item) {
             const name = item.textContent.split(' ')[0]; // Get the name
-            popupContent.innerHTML = `<h3>${name} Details</h3><p>Front: [Image]</p><p>Back: [Image]</p>`;
+            const details = images[name] || { front: '[Front Image]', back: '[Back Image]' }; // Get image from global object
+            popupContent.innerHTML = `<h3>${name} Details</h3><p>Front: <img src="${details.front}" alt="${name} Front"></p><p>Back: <img src="${details.back}" alt="${name} Back"></p>`;
             popup.style.display = 'block';
         }
 
