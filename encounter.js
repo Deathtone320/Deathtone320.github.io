@@ -144,7 +144,7 @@ const referenceCard = {
     back: 'https://raw.githubusercontent.com/Deathtone320/Deathtone320.github.io/refs/heads/main/images/Monster/Referance%20Card/MonstercardRulesBackTGCRotated.png'
 };
 
-// Check if all required elements are present before adding event listeners
+    // Check if all required elements are present before adding event listeners
     if (!encounterList || !popup || !popupHero || !contextMenu) {
         console.error('Some required DOM elements are missing. Aborting.');
         return;
@@ -166,11 +166,17 @@ const referenceCard = {
         });
     }
 
-    // Reset button functionality
+    // Reset button functionality with confirmation popup
     const resetBtn = document.getElementById('reset-btn');
     if (resetBtn) {
         resetBtn.addEventListener('click', function () {
-            encounterList.innerHTML = '';
+            if (confirm("Are you sure you want to reset the encounter list?")) {
+                const items = Array.from(encounterList.children);
+                items.forEach(item => {
+                    item.classList.add('fade-out');
+                    setTimeout(() => item.remove(), 500);
+                });
+            }
         });
     }
 
