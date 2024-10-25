@@ -5,22 +5,42 @@
     <button type="submit">Sign Up</button>
 </form>
 
-<script>
-   document.getElementById('signup-form').addEventListener('submit', function(e) {
-       e.preventDefault();
-       const email = document.getElementById('signup-email').value;
-       const password = document.getElementById('signup-password').value;
+<!-- Include Firebase SDKs -->
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+  import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyDioEFelEannZdfrp_MgZAFRuqhs6m3bJc",
+    authDomain: "deathforge-games-website.firebaseapp.com",
+    projectId: "deathforge-games-website",
+    storageBucket: "deathforge-games-website.appspot.com",
+    messagingSenderId: "323425449417",
+    appId: "1:323425449417:web:e121c53dd39a984bc0a418",
+    measurementId: "G-8PH2XL7SJ8"
+  };
 
-       firebase.auth().createUserWithEmailAndPassword(email, password)
-           .then((userCredential) => {
-               // Signed up successfully
-               const user = userCredential.user;
-               console.log('User signed up:', user);
-           })
-           .catch((error) => {
-               const errorCode = error.code;
-               const errorMessage = error.message;
-               console.error('Error signing up:', errorCode, errorMessage);
-           });
-   });
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  // Handle sign-up form submission
+  document.getElementById('signup-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = document.getElementById('signup-email').value;
+    const password = document.getElementById('signup-password').value;
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed up successfully
+        const user = userCredential.user;
+        console.log('User signed up:', user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error('Error signing up:', errorCode, errorMessage);
+      });
+  });
 </script>
