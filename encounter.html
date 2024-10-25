@@ -119,7 +119,8 @@
             justify-content: space-between;
             align-items: center;
             padding: 5px;
-            background-color: #eee;
+            background-color: #333; /* Dark background similar to buttons */
+            color: #fff;
             margin-bottom: 5px;
             position: relative;
             transition: opacity 0.5s;
@@ -138,8 +139,8 @@
             position: absolute;
             background-color: #fff;
             border: 1px solid #333;
-            width: 300px;
-            height: 400px;
+            width: 600px; /* Twice as big as before */
+            height: 800px; /* Twice as big as before */
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -150,6 +151,12 @@
         .popup-content {
             padding: 20px;
             text-align: center;
+        }
+
+        .popup-content img {
+            max-width: 100%;
+            max-height: 100%;
+            cursor: pointer;
         }
 
         .popup-close {
@@ -202,6 +209,11 @@
             .square {
                 width: 100%;
                 height: 300px;
+            }
+
+            .popup {
+                width: 90%;
+                height: 90%;
             }
         }
     </style>
@@ -270,6 +282,7 @@
         const popupContent = document.getElementById('popup-content');
         const contextMenu = document.getElementById('context-menu');
         let selectedItem = null;
+        let showingFront = true;
 
         // Roll a 1d20
         function rollD20() {
@@ -336,12 +349,24 @@
             contextMenu.style.display = 'none';
         });
 
-        // View details popup
+        // View details popup with front/back image toggle
         function viewDetails(item) {
             const name = item.textContent.split(' ')[0]; // Get the name
             const details = images[name] || { front: '[Front Image]', back: '[Back Image]' }; // Get image from global object
-            popupContent.innerHTML = `<h3>${name} Details</h3><p>Front: <img src="${details.front}" alt="${name} Front"></p><p>Back: <img src="${details.back}" alt="${name} Back"></p>`;
+            showingFront = true;
+
+            popupContent.innerHTML = `<h3>${name} Details</h3><img src="${details.front}" alt="${name} Front">`;
             popup.style.display = 'block';
+
+            // Toggle front/back on image click
+            popupContent.querySelector('img').addEventListener('click', function () {
+                if (showingFront) {
+                    this.src = details.back;
+                } else {
+                    this.src = details.front;
+                }
+                showingFront = !showingFront;
+            });
         }
 
         // Close popup
