@@ -18,7 +18,6 @@ let selectedItem = null;
 let showingFront = true;
 
 
-
 // Images for Heroes and Monsters
 const images = {
     Berserker: {
