@@ -6,116 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Contact - DeathForge Games</title>
+    <link rel="stylesheet" href="contact.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function () {
-            emailjs.init("mlw1gOv3vSlu-5g1m"); // Replace "YOUR_USER_ID" with your EmailJS user ID
-        })();
-    </script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-
-        header {
-            background: #333;
-            color: #fff;
-            padding: 10px 0;
-        }
-
-        header h1 {
-            text-align: center;
-            margin: 0;
-            font-size: 24px;
-        }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #444;
-            padding: 10px 0;
-        }
-
-        nav a {
-            color: #fff;
-            padding: 10px;
-            text-decoration: none;
-        }
-
-        nav a:hover {
-            background-color: #555;
-        }
-
-        .content {
-            padding: 20px;
-        }
-
-        .content h3 {
-            margin-bottom: 10px;
-        }
-
-        .section {
-            background-color: #fff;
-            margin-bottom: 20px;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        input, textarea {
-            margin-bottom: 10px;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        button {
-            padding: 10px;
-            font-size: 16px;
-            background-color: #333;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #555;
-        }
-
-        footer {
-            background: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-        }
-    </style>
 </head>
 
 <body>
-    <header>
-        <h1>Contact Us - DeathForge Games</h1>
-    </header>
-
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="contact.html">Contact</a>
-        <a href="encounter.html">Encounter Builder</a>
-    </nav>
+    <div id="header-container"></div>
 
     <section class="content">
         <div class="section">
@@ -133,31 +29,8 @@
         <p>&copy; 2024 DeathForge Games | All Rights Reserved</p>
     </footer>
 
-    <script>
-        // Listen for form submission
-        document.getElementById('contact-form').addEventListener('submit', function (event) {
-            event.preventDefault(); // Prevent the default form submit behavior
-
-            // Collect form data
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-
-            // Send the form data via EmailJS
-            emailjs.send("service_z7ywxbv", "template_e6cnynh", {
-                user_name: name,
-                user_email: email,
-                message: message
-            })
-            .then(function (response) {
-                alert('Message sent successfully!', response.status, response.text);
-            }, function (error) {
-                alert('Failed to send message. Please try again.', error);
-            });
-        });
-    </script>
-
-<script type="module" src="https://github.com/Deathtone320/Deathtone320.github.io/blob/main/firebase-config.js"></script>
+    <script src="contact.js"></script>
+    <script type="module" src="https://github.com/Deathtone320/Deathtone320.github.io/blob/main/firebase-config.js"></script>
 </body>
 
 </html>
