@@ -17,6 +17,7 @@ const contextMenu = document.getElementById('context-menu');
 let selectedItem = null;
 let showingFront = true;
 
+
 // Images for Heroes and Monsters
 const images = {
     Berserker: {
@@ -143,7 +144,6 @@ const referenceCard = {
     back: 'https://raw.githubusercontent.com/Deathtone320/Deathtone320.github.io/refs/heads/main/images/Monster/Referance%20Card/MonstercardRulesBackTGCRotated.png'
 };
 
-
 // Add hero or monster to the encounter list
 document.querySelectorAll('.btn').forEach(button => {
     button.addEventListener('click', function () {
@@ -216,8 +216,6 @@ contextMenu.addEventListener('click', function (e) {
     contextMenu.style.display = 'none';
 });
 
-
-
 // View details popup with front/back image toggle
 function viewDetails(item) {
     const name = item.textContent.split(' ')[0];
@@ -268,3 +266,8 @@ document.getElementById('popup-hero-close').addEventListener('click', function (
 document.getElementById('reset-btn').addEventListener('click', function () {
     encounterList.innerHTML = '';
 });
+
+// Utility function to roll a 1d20
+function rollD20() {
+    return Math.floor(Math.random() * 20) + 1;
+}
