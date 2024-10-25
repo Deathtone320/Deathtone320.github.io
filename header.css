@@ -1,0 +1,31 @@
+/* General header styling */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+/* Navigation bar styling */
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: #444;
+    padding: 10px 0;
+}
+
+nav a {
+    color: #fff;
+    padding: 10px 20px; /* Adjusted for consistent alignment */
+    text-decoration: none;
+    vertical-align: middle; /* Ensures all buttons align properly */
+}
+
+#auth-section a {
+    padding: 10px 20px; /* Same padding for the login/profile button */
+    vertical-align: middle;
+}
+
+nav a:hover {
+    background-color: #555;
+}
