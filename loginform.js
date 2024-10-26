@@ -1,9 +1,9 @@
 // Load the header and nav from the external file
 fetch('header.html')
-    .then(response => response.text())
+    .then(response => response.text())  // Fetch and parse the text
     .then(data => {
         document.getElementById('header-container').innerHTML = data;
-        updateLoginState(); // Call the function to check login state after loading the header
+        updateLoginState();  // Call the function to check login state after loading the header
     })
     .catch(error => console.error('Error loading header:', error));
 
