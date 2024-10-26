@@ -11,8 +11,10 @@
 </head>
 
 <body>
+    <!-- Load the navigation header -->
     <div id="header-container"></div>
 
+    <!-- Main content section -->
     <section class="content">
         <div class="section">
             <h3>Contact Us</h3>
@@ -25,12 +27,25 @@
         </div>
     </section>
 
+    <!-- Footer Section -->
     <footer>
         <p>&copy; 2024 DeathForge Games | All Rights Reserved</p>
     </footer>
 
+    <!-- Scripts for the page -->
     <script src="contact.js"></script>
-    <script type="module" src="https://github.com/Deathtone320/Deathtone320.github.io/blob/main/firebase-config.js"></script>
+    <script type="module" src="firebase-config.js"></script>
+    
+    <!-- Script to load the navigation header -->
+    <script>
+        // Load the header from the external file
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading header:', error));
+    </script>
 </body>
 
 </html>
