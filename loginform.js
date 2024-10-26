@@ -1,26 +1,13 @@
 // Load the header and nav from the external file
 fetch('header.html')
-    .then(response => response.text())  // Fetch and parse the text
+    .then(response => response.text())
     .then(data => {
         document.getElementById('header-container').innerHTML = data;
-        updateLoginState();  // Call the function to check login state after loading the header
+        updateLoginState(); // Call the function to check login state after loading the header
     })
     .catch(error => console.error('Error loading header:', error));
 
-// Firebase SDK setup for sign-up and Google login (no import statements needed)
-const firebaseConfig = {
-    apiKey: "AIzaSyDioEFelEannZdfrp_MgZAFRuqhs6m3bJc",
-    authDomain: "deathforge-games-website.firebaseapp.com",
-    projectId: "deathforge-games-website",
-    storageBucket: "deathforge-games-website.appspot.com",
-    messagingSenderId: "323425449417",
-    appId: "1:323425449417:web:e121c53dd39a984bc0a418",
-    measurementId: "G-8PH2XL7SJ8"
-};
-
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
+// Firebase Authentication Logic
 
 // Handle email/password sign-up
 document.getElementById('signup-form').addEventListener('submit', function (e) {
@@ -28,7 +15,7 @@ document.getElementById('signup-form').addEventListener('submit', function (e) {
     const email = document.getElementById('signup-email').value;
     const password = document.getElementById('signup-password').value;
 
-    auth.createUserWithEmailAndPassword(email, password)
+    firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
             const user = userCredential.user;
             console.log('User signed up:', user);
@@ -48,7 +35,7 @@ document.getElementById('signup-form').addEventListener('submit', function (e) {
 const provider = new firebase.auth.GoogleAuthProvider();
 
 document.getElementById('google-signin-btn').addEventListener('click', () => {
-    auth.signInWithPopup(provider)
+    firebase.auth().signInWithPopup(provider)
         .then((result) => {
             const user = result.user;
             console.log('Google sign-in successful:', user);
