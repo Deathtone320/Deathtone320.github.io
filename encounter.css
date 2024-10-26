@@ -120,18 +120,21 @@ body {
     display: none;
     position: fixed;
     z-index: 9999;
-    top: 100%;
-    left: 100%;
-    transform: translate(-50%, -50%);
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust the position to truly center */
     background-color: rgba(0, 0, 0, 0.9);
     color: white;
     padding: 20px;
     border-radius: 8px;
-    width: 300px;
+    width: 80%; /* Adjust width for responsiveness */
+    max-width: 500px; /* Set a maximum width for larger screens */
     text-align: center;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+    overflow: auto; /* In case content overflows */
 }
 
+/* Ensure images inside popups scale well */
 .popup img, .popup-hero img {
     max-width: 100%;
     height: auto;
@@ -149,11 +152,13 @@ body {
     width: 150px;
 }
 
+/* Context menu styling */
 .context-menu ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
+
 
 .context-menu ul li {
     padding: 10px;
@@ -168,7 +173,8 @@ body {
 
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
-    .square {
-        width: 100%;
+    .popup, .popup-hero {
+        width: 90%; /* Take up more screen space on mobile devices */
+        max-width: 90%;
     }
 }
