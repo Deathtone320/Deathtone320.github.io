@@ -6,21 +6,19 @@ header {
     text-align: center;
 }
 
-/* Flexbox for navigation and title */
+/* Navigation bar styling */
 nav {
-    display: inline-flex;
+    display: flex;
     justify-content: center;
     background-color: #444;
     padding: 10px 0;
 }
 
-/* Navigation links */
 nav a {
     color: #fff;
     padding: 10px 20px;
     text-decoration: none;
     vertical-align: middle;
-    font-size: 18px;
 }
 
 #auth-section a {
@@ -30,17 +28,4 @@ nav a {
 
 nav a:hover {
     background-color: #555;
-    color: #ddd;
 }
-
-/* Ensure the body content doesn't hide behind the fixed header */
-body {
-    padding-top: 60px;
-}
-
-/* Make the logo inline with navigation */
-.logo {
-    display: inline-block;
-    margin-right: 20px;
-}
-
