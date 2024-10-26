@@ -14,11 +14,24 @@ nav {
     padding: 10px 0;
 }
 
+nav ul {
+    list-style-type: none; /* Remove bullet points */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Align items horizontally */
+}
+
+/* Individual list item */
+nav ul li {
+    margin: 0 15px; /* Add some space between links */
+}
+
 nav a {
     color: #fff;
     padding: 10px 20px;
     text-decoration: none;
     vertical-align: middle;
+    font-size: 18px;
 }
 
 #auth-section a {
@@ -28,4 +41,9 @@ nav a {
 
 nav a:hover {
     background-color: #555;
+}
+
+/* Ensure the body content doesn't hide behind the fixed header */
+body {
+    padding-top: 60px;
 }
