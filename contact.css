@@ -11,51 +11,94 @@ body {
     color: #333;
 }
 
+/* Container for the main content */
 .content {
     padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
+/* Heading styles for each section */
 .content h3 {
     margin-bottom: 10px;
+    font-size: 1.8em;
+    text-align: center;
 }
 
+/* General section styles */
 .section {
     background-color: #fff;
     margin-bottom: 20px;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
 }
 
+/* Form styles for better alignment and usability */
 form {
     display: flex;
     flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
+/* Styling inputs and textarea fields */
 input, textarea {
     margin-bottom: 10px;
-    padding: 10px;
-    font-size: 16px;
+    padding: 15px;
+    font-size: 1.1em;
     border: 1px solid #ccc;
     border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
+/* Larger text area for messages */
+textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+/* Button styling for form submission */
 button {
-    padding: 10px;
-    font-size: 16px;
+    padding: 15px;
+    font-size: 1.2em;
     background-color: #333;
     color: white;
     border: none;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
+/* Button hover effect */
 button:hover {
     background-color: #555;
 }
 
+/* Footer styles */
 footer {
     background: #333;
     color: #fff;
     text-align: center;
-    padding: 10px;
+    padding: 15px 10px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Media query for smaller screens (mobile responsiveness) */
+@media (max-width: 768px) {
+    .content {
+        padding: 15px;
+    }
+
+    form {
+        width: 100%;
+    }
+
+    button {
+        width: 100%;
+    }
 }
