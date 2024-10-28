@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Hero - DeathForge Games</title>
+    <link rel="stylesheet" href="createhero.css">
+    <link rel="stylesheet" href="header.css">
+</head>
+
+<body>
+    <div id="header-container"></div> <!-- Include Header -->
+
+    <div class="container">
+        <h2>Create Your Hero</h2>
+        <form id="hero-form">
+            <label for="hero-image">Upload Picture:</label>
+            <input type="file" id="hero-image" accept="image/*" required><br>
+
+            <label for="hero-name">Hero Name:</label>
+            <input type="text" id="hero-name" placeholder="Enter hero name" required><br>
+
+            <label for="hero-race">Hero Race:</label>
+            <input type="text" id="hero-race" placeholder="Enter hero race" required><br>
+
+            <label for="hero-path">Hero Path:</label>
+            <select id="hero-path" required>
+                <option value="">Select Path</option>
+                <option value="warrior">Warrior</option>
+                <option value="mage">Mage</option>
+                <option value="rogue">Rogue</option>
+                <!-- Add more paths as needed -->
+            </select><br>
+
+            <!-- Base Stats -->
+            <h3>Base Stats</h3>
+            <label for="hero-attack">Attack:</label>
+            <input type="number" id="hero-attack" min="0" required><br>
+
+            <label for="hero-defend">Defend:</label>
+            <input type="number" id="hero-defend" min="0" required><br>
+
+            <label for="hero-body">Body Points:</label>
+            <input type="number" id="hero-body" min="0" required><br>
+
+            <label for="hero-mind">Mind:</label>
+            <input type="number" id="hero-mind" min="0" required><br>
+
+            <!-- Disciplines -->
+            <h3>Disciplines</h3>
+            <label for="mental">Mental:</label>
+            <input type="number" id="mental" min="0" required><br>
+
+            <label for="acrobatics">Acrobatics:</label>
+            <input type="number" id="acrobatics" min="0" required><br>
+
+            <label for="brawn">Brawn:</label>
+            <input type="number" id="brawn" min="0" required><br>
+
+            <label for="luck">Luck:</label>
+            <input type="number" id="luck" min="0" required><br>
+
+            <label for="faith">Faith:</label>
+            <input type="number" id="faith" min="0" required><br>
+
+            <label for="ritual">Ritual:</label>
+            <input type="number" id="ritual" min="0" required><br>
+
+            <!-- Trait Section -->
+            <h3>Trait</h3>
+            <div id="traits-section">
+                <p>Select a path to see related traits.</p>
+            </div>
+
+            <!-- Equipment, Spells, and Skills -->
+            <h3>Equipment</h3>
+            <textarea id="equipment" rows="2" placeholder="Enter equipment details"></textarea><br>
+
+            <h3>Spells</h3>
+            <textarea id="spells" rows="2" placeholder="Enter spell details"></textarea><br>
+
+            <h3>Skills</h3>
+            <textarea id="skills" rows="2" placeholder="Enter skill details"></textarea><br>
+
+            <button type="submit">Save Hero</button>
+        </form>
+    </div>
+
+    <script src="header.js"></script>
+    <script src="createhero.js"></script>
+</body>
+
+</html>
