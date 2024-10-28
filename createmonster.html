@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Monster - DeathForge Games</title>
+    <link rel="stylesheet" href="createmonster.css">
+    <link rel="stylesheet" href="header.css">
+</head>
+
+<body>
+    <div id="header-container"></div> <!-- Include Header -->
+
+    <div class="container">
+        <h2>Create Your Monster</h2>
+        <form id="monster-form">
+            <label for="monster-name">Monster Name:</label>
+            <input type="text" id="monster-name" placeholder="Enter monster name" required><br>
+
+            <label for="monster-type">Monster Race/Type:</label>
+            <input type="text" id="monster-type" placeholder="Enter monster type" required><br>
+
+            <!-- Base Stats -->
+            <h3>Base Stats</h3>
+            <label for="monster-attack">Attack:</label>
+            <input type="number" id="monster-attack" min="0" required><br>
+
+            <label for="monster-defend">Defend:</label>
+            <input type="number" id="monster-defend" min="0" required><br>
+
+            <label for="monster-body">Body Points:</label>
+            <input type="number" id="monster-body" min="0" required><br>
+
+            <label for="monster-mind">Mind:</label>
+            <input type="number" id="monster-mind" min="0" required><br>
+
+            <!-- Disciplines -->
+            <h3>Disciplines</h3>
+            <label for="mental">Mental:</label>
+            <input type="number" id="mental" min="0" required><br>
+
+            <label for="acrobatics">Acrobatics:</label>
+            <input type="number" id="acrobatics" min="0" required><br>
+
+            <label for="brawn">Brawn:</label>
+            <input type="number" id="brawn" min="0" required><br>
+
+            <label for="luck">Luck:</label>
+            <input type="number" id="luck" min="0" required><br>
+
+            <label for="faith">Faith:</label>
+            <input type="number" id="faith" min="0" required><br>
+
+            <label for="ritual">Ritual:</label>
+            <input type="number" id="ritual" min="0" required><br>
+
+            <!-- Abilities -->
+            <h3>Abilities</h3>
+            <textarea id="abilities" rows="3" placeholder="Enter abilities"></textarea><br>
+
+            <!-- Action Roll Table -->
+            <h3>Action Roll Table</h3>
+            <textarea id="action-roll" rows="6" placeholder="Enter actions"></textarea><br>
+
+            <!-- Extra Action Roll Table -->
+            <h3>Extra Action Roll Table</h3>
+            <textarea id="extra-action-roll" rows="6" placeholder="Enter extra actions"></textarea><br>
+
+            <!-- Movement -->
+            <h3>Movement</h3>
+            <textarea id="movement" rows="6" placeholder="Enter movement actions"></textarea><br>
+
+            <button type="submit">Save Monster</button>
+        </form>
+    </div>
+
+    <script src="header.js"></script>
+    <script src="createmonster.js"></script>
+</body>
+
+</html>
