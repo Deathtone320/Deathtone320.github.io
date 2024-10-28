@@ -18,6 +18,45 @@ document.addEventListener('DOMContentLoaded', function () {
     let selectedItem = null;
     let showingFront = true;
 
+// Firebase auth check
+firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+        // User is logged in, show custom checkboxes
+        document.getElementById('custom-heroes-checkbox').style.display = 'inline';
+        document.getElementById('custom-monsters-checkbox').style.display = 'inline';
+
+        // Fetch custom heroes and monsters for the logged-in user
+        const userId = user.uid;
+
+        // Event listener for the custom heroes checkbox
+        document.getElementById('custom-heroes-checkbox').addEventListener('change', function() {
+            if (this.checked) {
+                // Show custom heroes
+                fetchCustomHeroes(userId);
+            } else {
+                // Show default heroes
+                showDefaultHeroes();
+            }
+        });
+
+        // Event listener for the custom monsters checkbox
+        document.getElementById('custom-monsters-checkbox').addEventListener('change', function() {
+            if (this.checked) {
+                // Show custom monsters
+                fetchCustomMonsters(userId);
+            } else {
+                // Show default monsters
+                showDefaultMonsters();
+            }
+        });
+    } else {
+        // No user logged in, hide custom checkboxes
+        document.getElementById('custom-heroes-checkbox').style.display = 'none';
+        document.getElementById('custom-monsters-checkbox').style.display = 'none';
+    }
+});
+
+    
 // Images for Heroes and Monsters
 const images = {
     Berserker: {
@@ -236,6 +275,77 @@ const referenceCard = {
         contextMenu.style.display = 'none';
     });
 
+    // Function to fetch custom heroes for the logged-in user
+function fetchCustomHeroes(userId) {
+    const heroListElement = document.getElementById('hero-list');
+    heroListElement.innerHTML = ''; // Clear current list
+
+    // Fetch custom heroes from Firebase for the user
+    firebase.firestore().collection('heroes').where('userId', '==', userId).get()
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                const hero = doc.data();
+                const heroItem = document.createElement('button');
+                heroItem.innerText = hero.name;
+                heroItem.classList.add('btn');
+                heroListElement.appendChild(heroItem);
+            });
+        })
+        .catch((error) => {
+            console.error('Error fetching custom heroes:', error);
+        });
+}
+
+// Function to fetch custom monsters for the logged-in user
+function fetchCustomMonsters(userId) {
+    const monsterListElement = document.getElementById('monster-list');
+    monsterListElement.innerHTML = ''; // Clear current list
+
+    // Fetch custom monsters from Firebase for the user
+    firebase.firestore().collection('monsters').where('userId', '==', userId).get()
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                const monster = doc.data();
+                const monsterItem = document.createElement('button');
+                monsterItem.innerText = monster.name;
+                monsterItem.classList.add('btn');
+                monsterListElement.appendChild(monsterItem);
+            });
+        })
+        .catch((error) => {
+            console.error('Error fetching custom monsters:', error);
+        });
+}
+
+// Function to show default heroes
+function showDefaultHeroes() {
+    const heroListElement = document.getElementById('hero-list');
+    heroListElement.innerHTML = ''; // Clear current list
+
+    const defaultHeroes = ['Berserker', 'Druid', 'Researcher', 'Thief']; // Add more as needed
+    defaultHeroes.forEach(hero => {
+        const heroItem = document.createElement('button');
+        heroItem.innerText = hero;
+        heroItem.classList.add('btn');
+        heroListElement.appendChild(heroItem);
+    });
+}
+
+// Function to show default monsters
+function showDefaultMonsters() {
+    const monsterListElement = document.getElementById('monster-list');
+    monsterListElement.innerHTML = ''; // Clear current list
+
+    const defaultMonsters = ['Goblin', 'Orc', 'Dread Warrior', 'Abomination']; // Add more as needed
+    defaultMonsters.forEach(monster => {
+        const monsterItem = document.createElement('button');
+        monsterItem.innerText = monster;
+        monsterItem.classList.add('btn');
+        monsterListElement.appendChild(monsterItem);
+    });
+}
+
+    
     // View details popup with front/back image toggle
     function viewDetails(item) {
         const name = item.textContent.split(' ')[0];
