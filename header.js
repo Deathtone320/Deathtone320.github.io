@@ -4,6 +4,7 @@ fetch('header.html')
     .then(data => {
         document.getElementById('header-container').innerHTML = data;
         updateLoginState(); // Call the function after loading the header
+        addHomeforgeRedirect(); // Call the function to handle the Homeforge redirect
     })
     .catch(error => console.error('Error loading header:', error));
 
@@ -14,6 +15,25 @@ function updateLoginState() {
     if (user && user.email) {
         const authSection = document.getElementById('auth-section');
         authSection.innerHTML = `<a href="profile.html" id="profile-btn">Logged in as ${user.email}</a>`;
+    }
+}
+
+// Function to add Homeforge redirect logic
+function addHomeforgeRedirect() {
+    const homeforgeLink = document.getElementById('homeforge-link'); // Assuming this ID is set on the Homeforge link
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    if (homeforgeLink) {
+        homeforgeLink.addEventListener('click', function (e) {
+            if (!user || !user.email) {
+                e.preventDefault(); // Stop the link's default action
+                alert('You must be logged in to access this page.');
+                window.location.href = 'loginform.html'; // Redirect to login page if not logged in
+            } else {
+                // Allow normal navigation to Homeforge if user is logged in
+                window.location.href = 'homeforge.html';
+            }
+        });
     }
 }
 
