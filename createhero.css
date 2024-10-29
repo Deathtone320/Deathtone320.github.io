@@ -1,0 +1,62 @@
+/* General container for the hero creation form */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Style for the labels, making them larger and positioned to the left of inputs */
+label {
+    display: inline-block;
+    font-size: 1.2rem; /* Increase label size */
+    width: 200px; /* Adjust width for alignment */
+    margin-right: 10px;
+}
+
+/* Align input fields next to labels */
+input, select, textarea {
+    width: calc(100% - 220px); /* Account for label width and some margin */
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 1rem; /* Decrease the size of each line */
+    box-sizing: border-box;
+}
+
+/* Set a display box for the uploaded image */
+#hero-image-preview {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 150px; /* Width of the preview image */
+    height: 150px;
+    border: 2px solid #333;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#hero-image-preview img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* Adjust textarea for the trait field to be 4 lines wide */
+#trait {
+    height: 4rem; /* 4 lines wide */
+}
+
+/* General button styling */
+button {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: #555;
+}
