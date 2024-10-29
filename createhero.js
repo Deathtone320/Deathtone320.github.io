@@ -30,6 +30,23 @@ document.addEventListener('DOMContentLoaded', function () {
         traitField.value = pathTraits[selectedPath] || '';
     });
 
+
+    // Image preview functionality
+    document.getElementById('hero-image').addEventListener('change', function(event) {
+    const preview = document.getElementById('preview-img');
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+        preview.src = e.target.result;
+        preview.style.display = 'block'; // Show the preview image
+        };
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    });
+
     // Form submit handler
     document.getElementById('hero-form').addEventListener('submit', function (e) {
         e.preventDefault();
