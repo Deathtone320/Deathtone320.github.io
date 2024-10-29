@@ -1,62 +1,101 @@
-/* General container for the hero creation form */
+/* General styling for the container */
 .container {
-    max-width: 800px;
+    max-width: 600px;
     margin: 0 auto;
     padding: 20px;
+    background-color: #333;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Style for the labels, making them larger and positioned to the left of inputs */
+/* Styling for the labels and inputs */
 label {
     display: inline-block;
-    font-size: 1.2rem; /* Increase label size */
-    width: 200px; /* Adjust width for alignment */
-    margin-right: 10px;
+    width: 150px;
+    font-size: 1.2rem;
+    color: #fff;
 }
 
-/* Align input fields next to labels */
-input, select, textarea {
-    width: calc(100% - 220px); /* Account for label width and some margin */
-    padding: 10px;
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+    width: calc(100% - 160px);
+    margin-left: 10px;
+    padding: 8px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
     margin-bottom: 10px;
-    font-size: 1rem; /* Decrease the size of each line */
-    box-sizing: border-box;
 }
 
-/* Set a display box for the uploaded image */
+/* Increase height of textarea for trait */
+#trait {
+    height: 80px;
+    width: calc(100% - 160px);
+    margin-left: 10px;
+}
+
+/* Button Styling */
+button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #e63946;
+    color: white;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button[type="submit"]:hover {
+    background-color: #d62828;
+}
+
+/* Image preview styling */
 #hero-image-preview {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 150px; /* Width of the preview image */
+    width: 150px;
     height: 150px;
-    border: 2px solid #333;
     background-color: #f0f0f0;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
 }
 
 #hero-image-preview img {
     max-width: 100%;
     max-height: 100%;
+    object-fit: cover;
 }
 
-/* Adjust textarea for the trait field to be 4 lines wide */
-#trait {
-    height: 4rem; /* 4 lines wide */
+/* Adjust the placement of the image preview box */
+#hero-image-preview {
+    float: left;
+    margin-right: 20px;
 }
 
-/* General button styling */
-button {
-    background-color: #333;
+/* Upload button and label adjustments */
+#hero-image {
+    display: block;
+    margin-left: 160px;
+}
+
+h2 {
+    clear: both;
     color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
 }
 
-button:hover {
-    background-color: #555;
+/* Clearfix for floating image */
+.container::after {
+    content: "";
+    display: table;
+    clear: both;
 }
