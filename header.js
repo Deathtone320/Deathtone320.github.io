@@ -4,42 +4,59 @@ fetch('header.html')
     .then(data => {
         document.getElementById('header-container').innerHTML = data;
         updateLoginState(); // Call the function after loading the header
-        addHomeforgeRedirect(); // Call the function to handle the Homeforge redirect
     })
     .catch(error => console.error('Error loading header:', error));
 
 // Function to update login state
 function updateLoginState() {
     const user = JSON.parse(localStorage.getItem('user')); // Assuming user data is stored in localStorage
+    const authSection = document.getElementById('auth-section');
 
     if (user && user.email) {
-        const authSection = document.getElementById('auth-section');
-        authSection.innerHTML = `<a href="profile.html" id="profile-btn">Logged in as ${user.email}</a>`;
+        authSection.innerHTML = `<a href="#" id="profile-btn">Logged in as ${user.email}</a>`;
+        attachRightClickMenu(); // Attach the right-click menu
     }
 }
 
-// Function to add Homeforge redirect logic
-function addHomeforgeRedirect() {
-    const homeforgeLink = document.getElementById('homeforge-link'); // Assuming this ID is set on the Homeforge link
-    const user = JSON.parse(localStorage.getItem('user'));
+// Right-click menu for logout
+function attachRightClickMenu() {
+    const profileBtn = document.getElementById('profile-btn');
+    const contextMenu = document.createElement('div');
+    
+    contextMenu.id = 'profile-context-menu';
+    contextMenu.style.position = 'absolute';
+    contextMenu.style.display = 'none';
+    contextMenu.style.backgroundColor = '#444';
+    contextMenu.style.padding = '10px';
+    contextMenu.style.color = '#fff';
+    contextMenu.style.borderRadius = '5px';
+    contextMenu.style.boxShadow = '0 0 10px rgba(0,0,0,0.5)';
 
-    if (homeforgeLink) {
-        homeforgeLink.addEventListener('click', function (e) {
-            if (!user || !user.email) {
-                e.preventDefault(); // Stop the link's default action
-                alert('You must be logged in to access this page.');
-                window.location.href = 'loginform.html'; // Redirect to login page if not logged in
-            } else {
-                // Allow normal navigation to Homeforge if user is logged in
-                window.location.href = 'homeforge.html';
-            }
-        });
-    }
-}
+    const logoutOption = document.createElement('div');
+    logoutOption.textContent = 'Logout';
+    logoutOption.style.cursor = 'pointer';
+    
+    // Logout functionality
+    logoutOption.addEventListener('click', () => {
+        localStorage.removeItem('user');
+        window.location.href = 'loginform.html';
+    });
 
-// Example function for login (replace with your actual login logic)
-function loginUser(email) {
-    localStorage.setItem('user', JSON.stringify({ email }));
-    updateLoginState();
-    window.location.href = "index.html"; // Redirect to homepage after login
+    contextMenu.appendChild(logoutOption);
+    document.body.appendChild(contextMenu);
+
+    // Right-click event on profile button
+    profileBtn.addEventListener('contextmenu', (e) => {
+        e.preventDefault(); // Prevent the default context menu
+        contextMenu.style.display = 'block';
+        contextMenu.style.top = `${e.pageY}px`;
+        contextMenu.style.left = `${e.pageX}px`;
+    });
+
+    // Click anywhere else to close the menu
+    document.addEventListener('click', (e) => {
+        if (!contextMenu.contains(e.target) && e.target !== profileBtn) {
+            contextMenu.style.display = 'none';
+        }
+    });
 }
