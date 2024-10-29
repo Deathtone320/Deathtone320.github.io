@@ -7,12 +7,18 @@
     <title>Create Hero - DeathForge Games</title>
     <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="createhero.css"> <!-- Link to your new CSS file -->
 </head>
 
 <body>
     <div id="header-container"></div> <!-- Include Header -->
 
     <div class="container">
+        <!-- Display uploaded hero image in this box -->
+        <div id="hero-image-preview">
+            <span>No Image</span> <!-- Placeholder text when no image is uploaded -->
+        </div>
+
         <h2>Create Your Hero</h2>
         <form id="hero-form">
             <label for="hero-image">Upload Picture:</label>
@@ -42,7 +48,6 @@
                 <option value="Shaman">Shaman</option>
                 <option value="Stonewall">Stonewall</option>
                 <option value="Thief">Thief</option>
-                <!-- Add more paths as needed -->
             </select><br>
 
             <!-- Base Stats -->
@@ -79,8 +84,9 @@
             <label for="ritual">Ritual:</label>
             <input type="number" id="ritual" min="0" required><br>
 
+            <!-- Trait field expanded to 4 lines -->
             <label for="trait">Trait</label>
-            <input type="text" id="trait" readonly>
+            <textarea id="trait" readonly></textarea><br>
 
             <!-- Equipment, Spells, and Skills -->
             <h3>Equipment</h3>
