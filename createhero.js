@@ -20,11 +20,15 @@ Once per quest, spend three salvage tokens to summon a mechanical Golem. Salvage
     // Add more paths and their traits
 };
 
-    // Add event listener for path selection and update the trait
+    // Add event listener for path selection
     document.getElementById('hero-path').addEventListener('change', function() {
         const selectedPath = this.value;
         const traitField = document.getElementById('trait');
-        traitField.value = pathTraits[selectedPath] || ''; // Update trait field based on selected path
+        console.log('Selected path:', selectedPath); // Debugging
+        console.log('Trait for selected path:', pathTraits[selectedPath]); // Debugging
+
+        // Update the trait field based on the selected path
+        traitField.value = pathTraits[selectedPath] || '';
     });
 
     // Form submit handler
