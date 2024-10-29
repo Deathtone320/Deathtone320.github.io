@@ -47,3 +47,22 @@ nav a:hover {
 body {
     padding-top: 60px;
 }
+
+#profile-context-menu {
+    position: absolute;
+    display: none;
+    background-color: #444;
+    padding: 10px;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+#profile-context-menu div {
+    padding: 5px;
+}
+
+#profile-context-menu div:hover {
+    background-color: #555;
+}
