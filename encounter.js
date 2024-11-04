@@ -1,3 +1,12 @@
+const encounterList = document.getElementById('encounter-list');
+const popup = document.getElementById('popup');
+const popupHero = document.getElementById('popup-hero');
+const popupContent = document.getElementById('popup-content');
+const popupHeroContent = document.getElementById('popup-hero-content');
+const contextMenu = document.getElementById('context-menu');
+let selectedItem = null;
+let showingFront = true;
+
 // Load the header and nav from the external file
 fetch('header.html')
     .then(response => response.text())
@@ -9,16 +18,7 @@ fetch('header.html')
 
 // JavaScript for Encounter Builder functionality
 document.addEventListener('DOMContentLoaded', function () {
-    const encounterList = document.getElementById('encounter-list');
-    const popup = document.getElementById('popup');
-    const popupHero = document.getElementById('popup-hero');
-    const popupContent = document.getElementById('popup-content');
-    const popupHeroContent = document.getElementById('popup-hero-content');
-    const contextMenu = document.getElementById('context-menu');
-    let selectedItem = null;
-    let showingFront = true;
-
-    // Ensure Firebase is available before attempting to use it
+ // Ensure Firebase is available before attempting to use it
     if (typeof firebase !== 'undefined') {
         // Firebase auth check
         firebase.auth().onAuthStateChanged((user) => {
