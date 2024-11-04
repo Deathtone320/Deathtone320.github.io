@@ -20,10 +20,11 @@ body {
 }*/
 .container {
     display: flex;
-    justify-content: center; /* Centers containers horizontally */
-    align-items: center; /* Centers containers vertically */
-    flex-direction: column; /* Arranges the sections in a column layout */
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    flex-direction: column; /* Arranges in a column layout */
     min-height: 100vh; /* Ensures full viewport height */
+    width: 100%; /* Full width of the viewport */
 }
 
 
@@ -38,10 +39,13 @@ body {
     border-radius: 8px;
 }*/
 .square {
-    margin: 10px;
+    margin: 10px auto; /* Centers each .square within the container */
     padding: 20px;
-    width: 300px; /* Set a fixed width to make it more compact */
-    text-align: center; /* Center text inside each square */
+    width: 300px; /* Fixed width for each section */
+    text-align: center; /* Centers text inside each square */
+    background-color: rgba(255, 255, 255, 0.1); /* Light background for visibility */
+    border: 2px solid #333; /* Optional border for clarity */
+    border-radius: 8px;
 }
 
 
