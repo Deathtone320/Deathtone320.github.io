@@ -11,15 +11,23 @@ body {
 }
 
 /* Container styling to align sections */
-.container {
+/*.container {
     display: flex;
     gap: 20px;
     justify-content: center;
     padding: 20px;
     flex-wrap: wrap;
+}*/
+.container {
+    display: flex;
+    justify-content: center; /* Centers containers horizontally */
+    align-items: center; /* Centers containers vertically */
+    flex-direction: column; /* Arranges the sections in a column layout */
+    min-height: 100vh; /* Ensures full viewport height */
 }
 
-/* Box (square) styles for each section */
+
+/* Box (square) styles for each section 
 .square {
     background-color: rgba(255, 255, 255, 0.3);
     border: 2px solid #333;
@@ -28,7 +36,14 @@ body {
     padding: 10px;
     position: relative;
     border-radius: 8px;
+}*/
+.square {
+    margin: 10px;
+    padding: 20px;
+    width: 300px; /* Set a fixed width to make it more compact */
+    text-align: center; /* Center text inside each square */
 }
+
 
 /* Section headers */
 .square h3 {
