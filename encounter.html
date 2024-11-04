@@ -8,16 +8,22 @@
     <link rel="stylesheet" href="encounter.css"> <!-- Link to the specific encounter CSS -->
     <link rel="stylesheet" href="header.css"> <!-- Link to the shared header CSS -->
     <script src="encounter.js"></script>
+
+    <!-- Firebase Libraries -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+
 </head>
 
 <body>
     <div id="header-container"></div>
-    <link rel="stylesheet" href="header.css">
     <script src="header.js"></script>
 
-    <div class="container">
-        <!-- Heroes Section -->
-        <div class="square" id="heroes-square">
+<div class="square" id="heroes-square">
+    <h3>Heroes</h3>
+    <input type="checkbox" id="custom-heroes-checkbox" class="custom-toggle"><label for="custom-heroes-checkbox">Custom</label>
+    <div id="hero-list">
             <h3>Heroes</h3>
             <input type="checkbox" id="custom-heroes-checkbox" class="custom-toggle"><label for="custom-heroes-checkbox">Custom</label>
             <button class="btn" data-type="hero">Berserker</button>
@@ -35,10 +41,13 @@
             <button class="btn" data-type="hero">Rogue</button>
             <button class="btn" data-type="hero">Shaman</button>
             <button class="btn" data-type="hero">Stonewall</button>
-        </div>
+    </div>
+</div>
 
-        <!-- Monsters Section -->
-        <div class="square" id="monsters-square">
+<div class="square" id="monsters-square">
+    <h3>Monsters</h3>
+    <input type="checkbox" id="custom-monsters-checkbox" class="custom-toggle"><label for="custom-monsters-checkbox">Custom</label>
+    <div id="monster-list">
             <h3>Monsters</h3>
             <input type="checkbox" id="custom-monsters-checkbox" class="custom-toggle"><label for="custom-monsters-checkbox">Custom</label>
             <button class="btn" data-type="monster">Goblin</button>
@@ -55,7 +64,8 @@
             <button class="btn" data-type="monster">WaterElemental</button>
             <button class="btn" data-type="monster">GiantWolf</button>
             <button class="btn" data-type="monster">MechanicalGolem</button>
-        </div>
+    </div>
+</div>
 
         <!-- Encounter List Section -->
         <div class="square" id="encounter-square">
@@ -90,7 +100,7 @@
 
     <!-- Include the encounter.js and header.js for functionality -->
     <script src="encounter.js"></script>
-    <script src="header.js"></script> <!-- Ensure header logic is loaded -->
+
 </body>
 
 </html>
