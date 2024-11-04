@@ -10,7 +10,8 @@ fetch('header.html')
     .catch(error => console.error('Error loading header:', error));
 
 // JavaScript for Encounter Builder functionality
-document.addEventListener('DOMContentLoaded', function () {
+/*document.addEventListener('DOMContentLoaded', function () {*/
+window.addEventListener('load', function() {
     // Ensure Firebase is available before attempting to use it
     if (typeof firebase !== 'undefined') {
         console.log("Firebase is loaded and initialized.");
