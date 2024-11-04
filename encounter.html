@@ -15,13 +15,6 @@
 <!-- Firebase Firestore (if needed) -->
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
 
-
-</head>
-
-<body>
-    <div id="header-container"></div>
-    <script src="header.js"></script>
-
 <script>
     const firebaseConfig = {
         apiKey: "AIzaSyCYE4iP0vrmErBTUa-15D8yu4K8Rw4Fv9k",
@@ -35,7 +28,13 @@
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 </script>
-<script src="encounter.js"></script>
+
+</head>
+
+<body>
+    <div id="header-container"></div>
+    <script src="header.js"></script>
+
 
 <div class="square" id="heroes-square">
     <h3>Heroes</h3>
@@ -117,7 +116,6 @@
 
     <!-- Include the encounter.js and header.js for functionality -->
     <script src="encounter.js"></script>
-
 </body>
 
 </html>
