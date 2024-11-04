@@ -428,5 +428,4 @@ const referenceCard = {
         items.forEach(item => encounterList.appendChild(item));
     };
 
-console.log("Firebase initialized with version:", firebase.SDK_VERSION);
 
