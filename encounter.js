@@ -462,6 +462,7 @@ const referenceCard = {
         const items = Array.from(encounterList.children);
         items.sort((a, b) => b.getAttribute('data-roll') - a.getAttribute('data-roll'));
         items.forEach(item => encounterList.appendChild(item));
-    };
+    }
+};
 
 
