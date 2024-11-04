@@ -20,10 +20,11 @@ body {
 }*/
 .container {
     display: flex;
-    justify-content: center; /* Centers horizontally */
-    align-items: center; /* Centers vertically */
-    flex-direction: column; /* Arranges in a column layout */
+    justify-content: center; /* Centers the boxes horizontally */
+    align-items: center; /* Centers the boxes vertically */
+    flex-direction: row; /* Aligns the boxes side-by-side */
     min-height: 100vh; /* Ensures full viewport height */
+    gap: 20px; /* Adds space between the boxes */
     width: 100%; /* Full width of the viewport */
 }
 
@@ -39,7 +40,7 @@ body {
     border-radius: 8px;
 }*/
 .square {
-    margin: 10px auto; /* Centers each .square within the container */
+    margin: 10px;
     padding: 20px;
     width: 300px; /* Fixed width for each section */
     text-align: center; /* Centers text inside each square */
@@ -195,5 +196,11 @@ body {
     .popup, .popup-hero {
         width: 90%; /* Take up more screen space on mobile devices */
         max-width: 90%;
+    }
+    .container {
+        flex-direction: column; /* Stacks boxes vertically on small screens */
+    }
+    .square {
+        width: 90%; /* Responsive width for small screens */
     }
 }
