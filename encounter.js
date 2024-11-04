@@ -266,6 +266,12 @@ const referenceCard = {
         }
     });
 
+	if (typeof firebase !== 'undefined') {
+    console.log("Firebase is loaded and initialized.");
+	} else {
+    console.error("Firebase is not loaded. Check your script order.");
+	}
+
     // Handle context menu options
     contextMenu.addEventListener('click', function (e) {
         const action = e.target.id;
@@ -421,3 +427,5 @@ const referenceCard = {
         items.sort((a, b) => b.getAttribute('data-roll') - a.getAttribute('data-roll'));
         items.forEach(item => encounterList.appendChild(item));
     };
+
+
