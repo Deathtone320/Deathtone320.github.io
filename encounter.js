@@ -232,6 +232,37 @@ const referenceCard = {
     back: 'https://raw.githubusercontent.com/Deathtone320/Deathtone320.github.io/refs/heads/main/images/Monster/Referance%20Card/MonstercardRulesBackTGCRotated.png'
 };
 
+
+    // Event delegation for hero and monster buttons
+    document.getElementById('hero-list').addEventListener('click', function(event) {
+        if (event.target.classList.contains('btn')) {
+            addToEncounterList(event.target);
+        }
+    });
+
+    document.getElementById('monster-list').addEventListener('click', function(event) {
+        if (event.target.classList.contains('btn')) {
+            addToEncounterList(event.target);
+        }
+    });
+
+    function addToEncounterList(button) {
+        const name = button.innerText;
+        const type = button.getAttribute('data-type');
+        const roll = rollD20();
+        const li = document.createElement('li');
+        li.textContent = `${name} (Roll: ${roll})`;
+        li.setAttribute('data-roll', roll);
+        li.setAttribute('data-type', type);
+        encounterList.appendChild(li);
+
+        // Sort the list after adding
+        sortEncounterList();
+    }
+
+
+/*
+
     // Add hero or monster to the encounter list
     document.querySelectorAll('.btn').forEach(button => {
         button.addEventListener('click', function () {
@@ -248,6 +279,8 @@ const referenceCard = {
             sortEncounterList();
         });
     });
+
+*/
 
     // Right-click (context menu) functionality
     encounterList.addEventListener('contextmenu', function (e) {
