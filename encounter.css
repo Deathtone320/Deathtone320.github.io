@@ -10,42 +10,28 @@ body {
     color: #fff;
 }
 
-/* Container styling to align sections */
-/*.container {
+.wrapper {
     display: flex;
-    gap: 20px;
-    justify-content: center;
-    padding: 20px;
-    flex-wrap: wrap;
-}*/
-.container {
-    display: flex;
-    justify-content: center; /* Centers the boxes horizontally */
-    align-items: center; /* Centers the boxes vertically */
-    flex-direction: row; /* Aligns the boxes side-by-side */
-    min-height: 100vh; /* Ensures full viewport height */
-    gap: 20px; /* Adds space between the boxes */
-    width: 100%; /* Full width of the viewport */
+    justify-content: center; /* Centers the container horizontally */
+    align-items: center; /* Centers the container vertically */
+    min-height: 100vh; /* Full viewport height */
+    width: 100%;
+    max-width: 1200px; /* Optional: adjust based on your design */
+    margin: 0 auto;
 }
 
+.container {
+    display: flex;
+    gap: 20px; /* Adds space between the squares */
+    flex-direction: row; /* Aligns the squares side-by-side */
+}
 
-/* Box (square) styles for each section 
 .square {
-    background-color: rgba(255, 255, 255, 0.3);
-    border: 2px solid #333;
-    width: 250px;
-    min-height: 400px;
-    padding: 10px;
-    position: relative;
-    border-radius: 8px;
-}*/
-.square {
-    margin: 10px;
     padding: 20px;
-    width: 300px; /* Fixed width for each section */
-    text-align: center; /* Centers text inside each square */
-    background-color: rgba(255, 255, 255, 0.1); /* Light background for visibility */
-    border: 2px solid #333; /* Optional border for clarity */
+    width: 300px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid #333;
     border-radius: 8px;
 }
 
