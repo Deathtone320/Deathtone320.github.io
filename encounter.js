@@ -18,43 +18,53 @@ document.addEventListener('DOMContentLoaded', function () {
     let selectedItem = null;
     let showingFront = true;
 
-    // Firebase auth check
-    firebase.auth().onAuthStateChanged((user) => {
-        if (user) {
-            // User is logged in, show custom checkboxes
-            document.getElementById('custom-heroes-checkbox').style.display = 'inline';
-            document.getElementById('custom-monsters-checkbox').style.display = 'inline';
+    // Ensure Firebase is available before attempting to use it
+    if (typeof firebase !== 'undefined') {
+        // Firebase auth check
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                // User is logged in, show custom checkboxes
+                const customHeroesCheckbox = document.getElementById('custom-heroes-checkbox');
+                const customMonstersCheckbox = document.getElementById('custom-monsters-checkbox');
 
-            // Fetch custom heroes and monsters for the logged-in user
-            const userId = user.uid;
+                if (customHeroesCheckbox && customMonstersCheckbox) {
+                    customHeroesCheckbox.style.display = 'inline';
+                    customMonstersCheckbox.style.display = 'inline';
 
-            // Event listener for the custom heroes checkbox
-            document.getElementById('custom-heroes-checkbox').addEventListener('change', function() {
-                if (this.checked) {
-                    // Show custom heroes
-                    fetchCustomHeroes(userId);
+                    const userId = user.uid;
+
+                    // Event listener for the custom heroes checkbox
+                    customHeroesCheckbox.addEventListener('change', function() {
+                        if (this.checked) {
+                            fetchCustomHeroes(userId);
+                        } else {
+                            showDefaultHeroes();
+                        }
+                    });
+
+                    // Event listener for the custom monsters checkbox
+                    customMonstersCheckbox.addEventListener('change', function() {
+                        if (this.checked) {
+                            fetchCustomMonsters(userId);
+                        } else {
+                            showDefaultMonsters();
+                        }
+                    });
                 } else {
-                    // Show default heroes
-                    showDefaultHeroes();
+                    console.error('Custom hero and monster checkboxes are missing.');
                 }
-            });
+            } else {
+                // No user logged in, hide custom checkboxes if present
+                const customHeroesCheckbox = document.getElementById('custom-heroes-checkbox');
+                const customMonstersCheckbox = document.getElementById('custom-monsters-checkbox');
 
-            // Event listener for the custom monsters checkbox
-            document.getElementById('custom-monsters-checkbox').addEventListener('change', function() {
-                if (this.checked) {
-                    // Show custom monsters
-                    fetchCustomMonsters(userId);
-                } else {
-                    // Show default monsters
-                    showDefaultMonsters();
-                }
-            });
-        } else {
-            // No user logged in, hide custom checkboxes
-            document.getElementById('custom-heroes-checkbox').style.display = 'none';
-            document.getElementById('custom-monsters-checkbox').style.display = 'none';
-        }
-    });
+                if (customHeroesCheckbox) customHeroesCheckbox.style.display = 'none';
+                if (customMonstersCheckbox) customMonstersCheckbox.style.display = 'none';
+            }
+        });
+    } else {
+        console.error("Firebase is not defined. Ensure Firebase is properly initialized before running this script.");
+    }
 
     // Check if all required elements are present before adding event listeners
     if (!encounterList || !popup || !popupHero || !contextMenu) {
@@ -91,6 +101,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+});
 	
 	// Images for Heroes and Monsters
 const images = {
