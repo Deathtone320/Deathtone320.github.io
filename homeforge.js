@@ -7,20 +7,14 @@ fetch('header.html')
     })
     .catch(error => console.error('Error loading header:', error));
 
-// Function to update login state with Firebase
+// Function to update login state
 function updateLoginState() {
-    firebase.auth().onAuthStateChanged(user => {
+    const user = JSON.parse(localStorage.getItem('user')); // Assuming user data is stored in localStorage
+
+    if (user && user.email) {
         const authSection = document.getElementById('auth-section');
-        if (authSection) {
-            if (user) {
-                authSection.innerHTML = `<a href="#" id="profile-btn">Logged in as ${user.email}</a>`;
-                // Now fetch and display user's heroes and monsters
-                fetchAndDisplayUserData(user.uid);
-            } else {
-                authSection.innerHTML = '<a href="loginform.html" id="login-btn">Log In</a>';
-            }
-        }
-    });
+        authSection.innerHTML = `<a href="profile.html" id="profile-btn">Logged in as ${user.email}</a>`;
+    }
 }
 
 // Function to fetch and display user's heroes and monsters
