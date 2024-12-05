@@ -327,6 +327,12 @@ const referenceCard = {
         contextMenu.style.display = 'none';
     });
 
+document.addEventListener('DOMContentLoaded', () => {
+    // Your encounter builder logic here
+    // Example:
+    console.log("Encounter Builder Loaded");
+});
+
     // Function to fetch custom heroes for the logged-in user
     function fetchCustomHeroes(userId) {
         const heroListElement = document.getElementById('hero-list');
