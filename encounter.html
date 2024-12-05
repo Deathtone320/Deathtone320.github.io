@@ -8,38 +8,37 @@
     <link rel="stylesheet" href="encounter.css"> <!-- Link to the specific encounter CSS -->
     <link rel="stylesheet" href="header.css"> <!-- Link to the shared header CSS -->
 
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 
-<script>
-    const firebaseConfig = {
-        apiKey: "AIzaSyCYE4iP0vrmErBTUa-15D8yu4K8Rw4Fv9k",
-        authDomain: "deathforge-gaming-website.firebaseapp.com",
-        projectId: "deathforge-gaming-website",
-        storageBucket: "deathforge-gaming-website.appspot.com",
-        messagingSenderId: "211684257856",
-        appId: "1:211684257856:web:cc36cb6eab177471b7efa5",
-        measurementId: "G-SWNJRSK4T6"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyCYE4iP0vrmErBTUa-15D8yu4K8Rw4Fv9k",
+            authDomain: "deathforge-gaming-website.firebaseapp.com",
+            projectId: "deathforge-gaming-website",
+            storageBucket: "deathforge-gaming-website.appspot.com",
+            messagingSenderId: "211684257856",
+            appId: "1:211684257856:web:cc36cb6eab177471b7efa5",
+            measurementId: "G-SWNJRSK4T6"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
 
-    console.log("Firebase initialized with version:", firebase.SDK_VERSION);
-</script>
-
-
+        console.log("Firebase initialized with version:", firebase.SDK_VERSION);
+    </script>
 </head>
 
 <body>
     <div id="header-container"></div>
     <script src="header.js"></script>
 
-<div class="wrapper">
-<div class="square" id="heroes-square">
-    <h3>Heroes</h3>
-    <input type="checkbox" id="custom-heroes-checkbox" class="custom-toggle"><label for="custom-heroes-checkbox">Custom</label>
-    <div id="hero-list">
+    <div class="wrapper">
+        <div class="square" id="heroes-square">
+            <h3>Heroes</h3>
+            <input type="checkbox" id="custom-heroes-checkbox" class="custom-toggle"><label for="custom-heroes-checkbox">Custom</label>
+            <div id="hero-list">
+                <!-- Hero buttons -->
             <button class="btn" data-type="hero">Berserker</button>
             <button class="btn" data-type="hero">Druid</button>
             <button class="btn" data-type="hero">Researcher</button>
@@ -55,13 +54,14 @@
             <button class="btn" data-type="hero">Rogue</button>
             <button class="btn" data-type="hero">Shaman</button>
             <button class="btn" data-type="hero">Stonewall</button>
-    </div>
-</div>
+            </div>
+        </div>
 
-<div class="square" id="monsters-square">
-    <h3>Monsters</h3>
-    <input type="checkbox" id="custom-monsters-checkbox" class="custom-toggle"><label for="custom-monsters-checkbox">Custom</label>
-    <div id="monster-list">
+        <div class="square" id="monsters-square">
+            <h3>Monsters</h3>
+            <input type="checkbox" id="custom-monsters-checkbox" class="custom-toggle"><label for="custom-monsters-checkbox">Custom</label>
+            <div id="monster-list">
+                <!-- Monster buttons -->
             <button class="btn" data-type="monster">Goblin</button>
             <button class="btn" data-type="monster">Orc</button>
             <button class="btn" data-type="monster">Abomination</button>
@@ -76,8 +76,8 @@
             <button class="btn" data-type="monster">WaterElemental</button>
             <button class="btn" data-type="monster">GiantWolf</button>
             <button class="btn" data-type="monster">MechanicalGolem</button>
-    </div>
-</div>
+            </div>
+        </div>
 
         <!-- Encounter List Section -->
         <div class="square" id="encounter-square">
@@ -86,7 +86,6 @@
             <button id="reset-btn">Reset</button>
         </div>
     </div>
-
 
     <!-- Popups for monster and hero details -->
     <div id="popup" class="popup">
@@ -110,9 +109,7 @@
         </ul>
     </div>
 
-<!-- Include the encounter.js and header.js for functionality -->
-<script src="encounter.js"></script>
-
+    <script src="encounter.js"></script>
 </body>
 
 </html>
