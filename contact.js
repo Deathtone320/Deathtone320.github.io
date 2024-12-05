@@ -71,17 +71,27 @@ document.getElementById('contact-form').addEventListener('submit', function(even
 
     // If validation passed, send the form data via EmailJS
     if (isValid) {
+        console.log('Sending email with:', {
+            user_name: nameInput.value,
+            user_email: emailInput.value,
+            message: messageInput.value
+        });
+
         emailjs.send("service_z7ywywv", "template_e6cnynh", {
             user_name: nameInput.value,
             user_email: emailInput.value,
             message: messageInput.value
         })
         .then(function(response) {
+            console.log('EmailJS response:', response);
             alert('Message sent successfully!');
             // Optionally, reset the form here or show a success message on the page
             this.reset(); // Reset the form
         }.bind(this), function(error) {
+            console.error('EmailJS error:', error);
             alert('Failed to send message. Please try again.', error);
         });
+    } else {
+        console.log('Form validation failed. Not sending email.');
     }
 });
