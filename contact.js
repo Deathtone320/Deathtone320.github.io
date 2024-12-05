@@ -12,10 +12,12 @@ function updateLoginState() {
     const user = JSON.parse(localStorage.getItem('user')); // Assuming user data is stored in localStorage
 
     const authSection = document.getElementById('auth-section');
-    if (user && user.email) {
-        authSection.innerHTML = `<a href="profile.html" id="profile-btn" aria-label="View your profile">Logged in as ${user.email}</a>`;
-    } else {
-        authSection.innerHTML = '<a href="login.html" id="login-btn" aria-label="Log in">Log In</a>';
+    if (authSection) {
+        if (user && user.email) {
+            authSection.innerHTML = `<a href="profile.html" id="profile-btn" aria-label="View your profile">Logged in as ${user.email}</a>`;
+        } else {
+            authSection.innerHTML = '<a href="login.html" id="login-btn" aria-label="Log in">Log In</a>';
+        }
     }
 }
 
@@ -43,21 +45,27 @@ document.getElementById('contact-form').addEventListener('submit', function(even
 
     // Clear previous error messages
     const errors = ['nameError', 'emailError', 'messageError'];
-    errors.forEach(id => document.getElementById(id).innerHTML = '');
+    errors.forEach(id => {
+        const errorElement = document.getElementById(id);
+        if (errorElement) errorElement.innerHTML = '';
+    });
 
     // Validation
     if (nameInput.value.trim() === '') {
-        document.getElementById('nameError').innerHTML = 'Name is required.';
+        const nameError = document.getElementById('nameError');
+        if (nameError) nameError.innerHTML = 'Name is required.';
         isValid = false;
     }
 
     if (!validateEmail(emailInput.value)) {
-        document.getElementById('emailError').innerHTML = 'Please enter a valid email address.';
+        const emailError = document.getElementById('emailError');
+        if (emailError) emailError.innerHTML = 'Please enter a valid email address.';
         isValid = false;
     }
 
     if (messageInput.value.trim() === '' || messageInput.value.length > 500) {
-        document.getElementById('messageError').innerHTML = 'Message must be between 1 and 500 characters.';
+        const messageError = document.getElementById('messageError');
+        if (messageError) messageError.innerHTML = 'Message must be between 1 and 500 characters.';
         isValid = false;
     }
 
