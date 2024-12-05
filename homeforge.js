@@ -1,27 +1,54 @@
-const user = firebase.auth().currentUser;
-if (user) {
+// Load the header and nav from the external file
+fetch('header.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('header-container').innerHTML = data;
+        updateLoginState(); // Call the function after loading the header
+    })
+    .catch(error => console.error('Error loading header:', error));
+
+// Function to update login state with Firebase
+function updateLoginState() {
+    firebase.auth().onAuthStateChanged(user => {
+        const authSection = document.getElementById('auth-section');
+        if (authSection) {
+            if (user) {
+                authSection.innerHTML = `<a href="#" id="profile-btn">Logged in as ${user.email}</a>`;
+                // Now fetch and display user's heroes and monsters
+                fetchAndDisplayUserData(user.uid);
+            } else {
+                authSection.innerHTML = '<a href="loginform.html" id="login-btn">Log In</a>';
+            }
+        }
+    });
+}
+
+// Function to fetch and display user's heroes and monsters
+function fetchAndDisplayUserData(userId) {
     // Fetch and display saved heroes
-    firebase.firestore().collection('users').doc(user.uid).collection('heroes').get()
+    firebase.firestore().collection('users').doc(userId).collection('heroes').get()
         .then((querySnapshot) => {
+            const heroesList = document.getElementById('heroes-list');
+            heroesList.innerHTML = ''; // Clear existing content
             querySnapshot.forEach((doc) => {
                 const hero = doc.data();
-                // Add hero data to your HTML (e.g., dynamically generate a list)
-                document.getElementById('heroes-list').innerHTML += `<li>${hero.name} - ${hero.race}</li>`;
+                heroesList.innerHTML += `<li>${hero.name} - ${hero.race}</li>`;
             });
         });
 
     // Fetch and display saved monsters
-    firebase.firestore().collection('users').doc(user.uid).collection('monsters').get()
+    firebase.firestore().collection('users').doc(userId).collection('monsters').get()
         .then((querySnapshot) => {
+            const monstersList = document.getElementById('monsters-list');
+            monstersList.innerHTML = ''; // Clear existing content
             querySnapshot.forEach((doc) => {
                 const monster = doc.data();
-                // Add monster data to your HTML
-                document.getElementById('monsters-list').innerHTML += `<li>${monster.name} - ${monster.type}</li>`;
+                monstersList.innerHTML += `<li>${monster.name} - ${monster.type}</li>`;
             });
         });
 }
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Your homeforge logic here
-    // Example:
+    // Any additional homeforge logic here
     console.log("Homeforge Loaded");
 });
