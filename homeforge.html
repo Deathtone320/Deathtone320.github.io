@@ -7,11 +7,30 @@
     <title>Homeforge - DeathForge Games</title>
     <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="header.css">
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyCYE4iP0vrmErBTUa-15D8yu4K8Rw4Fv9k",
+            authDomain: "deathforge-gaming-website.firebaseapp.com",
+            projectId: "deathforge-gaming-website",
+            storageBucket: "deathforge-gaming-website.appspot.com",
+            messagingSenderId: "211684257856",
+            appId: "1:211684257856:web:cc36cb6eab177471b7efa5",
+            measurementId: "G-SWNJRSK4T6"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        console.log("Firebase initialized with version:", firebase.SDK_VERSION);
+    </script>
 </head>
 
 <body>
     <div id="header-container"></div>
-    <link rel="stylesheet" href="header.css">
     <script src="header.js"></script>
 
     <div class="container">
@@ -26,10 +45,10 @@
     </div>
 
     <footer>
-        <p>&copy; 2024 DeathForge Games | All Rights Reserved</p>
+        <p>© 2024 DeathForge Games | All Rights Reserved</p>
     </footer>
 
-    <script src="header.js"></script>
+    <script src="homeforge.js"></script>
 </body>
 
 </html>
