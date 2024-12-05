@@ -11,13 +11,12 @@ fetch('header.html')
 // Initialize Firebase
 function initializeFirebase() {
     var firebaseConfig = {
-        apiKey: "AIzaSyCYE4iP0vrmErBTUa-15D8yu4K8Rw4Fv9k",
-        authDomain: "deathforge-gaming-website.firebaseapp.com",
-        projectId: "deathforge-gaming-website",
-        storageBucket: "deathforge-gaming-website.appspot.com",
-        messagingSenderId: "211684257856",
-        appId: "1:211684257856:web:cc36cb6eab177471b7efa5",
-        measurementId: "G-SWNJRSK4T6"
+        apiKey: "YOUR_API_KEY",
+        authDomain: "YOUR_AUTH_DOMAIN",
+        projectId: "YOUR_PROJECT_ID",
+        storageBucket: "YOUR_STORAGE_BUCKET",
+        messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+        appId: "YOUR_APP_ID"
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
