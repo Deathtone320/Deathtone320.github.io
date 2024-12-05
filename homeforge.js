@@ -20,3 +20,8 @@ if (user) {
             });
         });
 }
+document.addEventListener('DOMContentLoaded', () => {
+    // Your homeforge logic here
+    // Example:
+    console.log("Homeforge Loaded");
+});
