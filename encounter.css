@@ -8,22 +8,23 @@ body {
     font-family: Arial, sans-serif;
     background-color: black;
     color: #fff;
+    font-size: 16px; /* Base font size */
 }
 
 .wrapper {
     display: flex;
-    justify-content: center; /* Centers the container horizontally */
-    align-items: center; /* Centers the container vertically */
-    min-height: 100vh; /* Full viewport height */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
     width: 100%;
-    max-width: 1200px; /* Optional: adjust based on your design */
+    max-width: 1200px;
     margin: 0 auto;
 }
 
 .container {
     display: flex;
-    gap: 20px; /* Adds space between the squares */
-    flex-direction: row; /* Aligns the squares side-by-side */
+    gap: 20px;
+    flex-direction: row;
 }
 
 .square {
@@ -35,18 +36,17 @@ body {
     border-radius: 8px;
 }
 
-
 /* Section headers */
 .square h3 {
     text-align: center;
     margin-bottom: 10px;
-    font-size: 1.4em;
+    font-size: 1.1em; /* Scales with base font size */
 }
 
 /* Button styles for selecting heroes/monsters */
 .btn {
     width: 100%;
-    padding: 12px;
+    padding: 15px; /* Larger padding for easier touch interaction */
     margin-bottom: 5px;
     cursor: pointer;
     border: none;
@@ -54,7 +54,7 @@ body {
     color: #fff;
     text-align: center;
     border-radius: 4px;
-    font-size: 1.1em;
+    font-size: 1em; /* Scales with base font size */
     transition: background-color 0.3s ease;
 }
 
@@ -67,14 +67,16 @@ body {
 .encounter-list {
     list-style-type: none;
     padding: 0;
+    max-height: 300px; /* Adjust based on your content */
+    overflow-y: auto;
 }
 
 /* List items inside encounter list */
 .encounter-list li {
     background-color: #444;
     color: white;
-    padding: 10px;
-    margin-bottom: 5px;
+    padding: 15px; /* Increased padding for touch devices */
+    margin-bottom: 10px; /* More space for touch interaction */
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -106,13 +108,13 @@ body {
 /* Reset button style */
 #reset-btn {
     margin-top: 20px;
-    padding: 12px;
+    padding: 15px; /* Larger padding for easier touch interaction */
     background-color: red;
     color: white;
     border: none;
     cursor: pointer;
     width: 100%;
-    font-size: 1.1em;
+    font-size: 1em; /* Scales with base font size */
     border-radius: 4px;
     transition: background-color 0.3s ease;
 }
@@ -126,18 +128,19 @@ body {
     display: none;
     position: fixed;
     z-index: 9999;
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Adjust the position to truly center */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: rgba(0, 0, 0, 0.9);
     color: white;
     padding: 20px;
     border-radius: 8px;
-    width: 80%; /* Adjust width for responsiveness */
-    max-width: 500px; /* Set a maximum width for larger screens */
+    width: 90%; /* Take up more screen space on mobile devices */
+    max-width: 500px;
+    max-height: 80vh; /* Prevents popup from taking too much screen */
+    overflow-y: auto;
     text-align: center;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
-    overflow: auto; /* In case content overflows */
 }
 
 /* Ensure images inside popups scale well */
@@ -155,7 +158,8 @@ body {
     border: 1px solid #222;
     padding: 10px;
     border-radius: 8px;
-    width: 150px;
+    width: 90vw; /* Wider on mobile for easier touch */
+    max-width: 250px; /* Cap for larger screens */
 }
 
 /* Context menu styling */
@@ -164,7 +168,6 @@ body {
     padding: 0;
     margin: 0;
 }
-
 
 .context-menu ul li {
     padding: 10px;
@@ -179,14 +182,27 @@ body {
 
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
-    .popup, .popup-hero {
-        width: 90%; /* Take up more screen space on mobile devices */
-        max-width: 90%;
+    .wrapper {
+        min-height: auto; /* Allow content to dictate the height on mobile */
     }
     .container {
         flex-direction: column; /* Stacks boxes vertically on small screens */
     }
     .square {
         width: 90%; /* Responsive width for small screens */
+    }
+    .popup, .popup-hero {
+        width: 95%; /* Take up even more screen space on mobile devices */
+        max-width: 95%;
+    }
+}
+
+/* Adjustments for very small screens */
+@media (max-width: 480px) {
+    .square {
+        width: 100%; /* Full width on very small screens */
+    }
+    .btn, #reset-btn {
+        font-size: 0.9em; /* Smaller text for tiny screens */
     }
 }
