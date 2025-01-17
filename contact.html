@@ -37,19 +37,6 @@
     <script src="contact.js"></script>
     <script type="module" src="firebase-config.js"></script>
     
-    <!-- Script to load the navigation header -->
-    <script>
-        // Load the header from the external file
-        fetch('header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header-container').innerHTML = data;
-            })
-            .catch(error => console.error('Error loading header:', error));
-    </script>
-
-        <!-- Include the encounter.js and header.js for functionality -->
-    <script src="encounter.js"></script>
 </body>
 
 </html>
